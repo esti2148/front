@@ -241,32 +241,27 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                         </Grid>
 
                         {/* ספק */}        
-                        <Box className="select" sx={{ minWidth: 120 }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">ספק </InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    label="ספק "
-                                    className="tool"
-                                    value={product.namePurveyor}
-                                     onChange={x =>
-                                     setnewProduct({ ...product, namePurveyor: x.target.value })
-                                     }
-                                     startAdornment={
-                                        <InputAdornment position="start">
-                                            <LocalShippingIcon color="primary" />
-                                        </InputAdornment>
-                                     }
-                                >
-                                    { supplierList.map(supp => {
-                                        return <MenuItem key={supp.id} value={supp.name}>{supp.name}</MenuItem>
-
-                                    })}
-                                
-                                </Select>
-                            </FormControl>
-                        </Box>
+                        <Grid item xs={12} md={6}>
+    <FormControl fullWidth>
+        <InputLabel id="supplier-select-label">ספק</InputLabel>
+        <Select
+            labelId="supplier-select-label"
+            id="supplier-select"
+            value={product.namePurveyor}
+            label="ספק"
+            onChange={x => setnewProduct({ ...product, namePurveyor: x.target.value })}
+            startAdornment={
+                <InputAdornment position="start">
+                    <LocalShippingIcon color="primary" />
+                </InputAdornment>
+            }
+        >
+            {supplierList.map(supp => (
+                <MenuItem key={supp.id} value={supp.name}>{supp.name}</MenuItem>
+            ))}
+        </Select>
+    </FormControl>
+</Grid>
                         {/* סטוק*/}
 
                         <Grid item xs={12}>
