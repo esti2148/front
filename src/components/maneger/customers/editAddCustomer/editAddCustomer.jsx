@@ -194,7 +194,7 @@ export const EditAddCustomer = ({ customer, onClose, isAdd, onSave }) => {
 
         let id = newCustomer.instituteId
         dispatch(updateCustomerThunk({ newCustomer, id }));
-        dispatch(getCustomerThunk());
+      
         onClose();
     }
 
