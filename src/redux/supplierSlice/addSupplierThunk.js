@@ -4,7 +4,7 @@ export const addSuppliersThunk = createAsyncThunk(
     'addSuppliersThunk',
     async (supplier) => {
 
-        const response = await fetch(`https://localhost:7267/api/Products/Add`,
+        const response = await fetch(`https://localhost:7267/api/Purveryors/addSupplier`,
         {
             method: 'POST',
             body: JSON.stringify(supplier),
