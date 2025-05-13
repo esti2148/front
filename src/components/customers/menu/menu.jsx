@@ -41,7 +41,7 @@ export const Menu = () => {
                         <li onClick={() => navigate("/")}>דף הבית</li>
                         <li onClick={() => navigate("order")}>הזמנת מוצרים</li>
                         <li onClick={() => navigate("shoppingBasket")}>סל הקניות</li>
-                        <li onClick={() => navigate("prevOrder")}>הזמנות קודמות</li>
+                        <li onClick={() => { if(isExist) navigate("prevOrder")}}>הזמנות קודמות</li>
                     </ul>
                 </nav>
 
@@ -58,7 +58,7 @@ export const Menu = () => {
                             <button className="secondary-button" onClick={() => navigate("login")}>
                                 התחברות
                             </button>
-                            <button className="primary-button" debugger onClick={() =>{  if (isExist) navigate("registration")}}>
+                            <button className="primary-button"  onClick={() => navigate("registration")}>
                                 הרשמה
                             </button>
                         </div>
