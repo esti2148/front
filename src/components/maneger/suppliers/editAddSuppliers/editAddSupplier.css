@@ -1,0 +1,92 @@
+/* סגנון כללי לדיאלוג */
+.supplier-dialog-paper {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* כותרת הדיאלוג */
+.dialog-title {
+    background-color: #f5f5f5;
+    padding: 16px;
+}
+
+.dialog-title-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog-heading {
+    font-weight: 600;
+    color: #3f51b5;
+}
+
+.close-button {
+    color: #757575;
+}
+
+/* תוכן הדיאלוג */
+.dialog-content {
+    padding: 24px;
+}
+
+.form-container {
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.text-field {
+    margin-bottom: 16px;
+}
+
+/* כפתורי פעולה */
+.dialog-actions {
+    padding: 16px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 24px;
+    border-radius: 25px;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.save-button:hover {
+    background-color: #388e3c;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cancel-button {
+    border-radius: 25px;
+    padding: 8px 24px;
+}
+
+/* סגנון לשדות טקסט */
+.MuiInputBase-root {
+    border-radius: 8px;
+}
+
+.MuiInputLabel-root {
+    font-weight: 500;
+}
+
+/* אנימציה לדיאלוג */
+.MuiDialog-paper {
+    animation: dialogFadeIn 0.3s ease-out;
+}
+
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

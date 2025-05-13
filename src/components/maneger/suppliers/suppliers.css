@@ -258,6 +258,94 @@
       color: #2196f3;
     }
 
+    /* הוספת סגנונות לכפתורי פעולה */
+    .supplier-actions {
+        display: flex;
+        gap: 10px;
+        margin-right: auto;
+        padding-right: 15px;
+    }
+
+    .action-button {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    .edit-button {
+        background-color: #2196f3;
+    }
+
+    .edit-button:hover {
+        background-color: #0d8aee;
+    }
+
+    .delete-button {
+        background-color: #f44336;
+    }
+
+    .delete-button:hover {
+        background-color: #e53935;
+    }
+
+    .add-supplier-button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        margin: 20px auto;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .add-supplier-button:hover {
+        background-color: #388e3c;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* סגנון לדיאלוג מחיקה */
+    .delete-dialog-title {
+        background-color: #ffebee;
+        color: #d32f2f;
+        padding: 16px;
+    }
+
+    .warning-icon {
+        margin-left: 8px;
+        vertical-align: middle;
+    }
+
+    .delete-dialog-content {
+        padding: 20px;
+        color: #424242;
+    }
+
+    .warning-message {
+        margin-top: 16px;
+        padding: 12px;
+        background-color: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 4px;
+    }
+
+    .delete-dialog-actions {
+        padding: 16px;
+        border-top: 1px solid #e0e0e0;
+    }
+
     /* ===== רשימת מוצרים של ספק ===== */
     .supplier-products {
       max-height: 0;
