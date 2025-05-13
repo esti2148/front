@@ -160,6 +160,7 @@ export const ProductManeger = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [productToDelete, setProductToDelete] = useState(null);
+    const [cannotDeleteDialogOpen, setCannotDeleteDialogOpen] = useState(false);
 
     const fullState = useSelector(state => state);
     console.log("מבנה מלא של ה-state:", fullState);
@@ -228,7 +229,8 @@ export const ProductManeger = () => {
             setProductToDelete(null);
           }
           else{
-            alert(" .לא ניתן למחוק פריט שנמכר בהזמנות")
+            setCannotDeleteDialogOpen(true);
+            setDeleteDialogOpen(false);
           }
         }
     };
@@ -330,7 +332,35 @@ export const ProductManeger = () => {
                     onSave={handleSaveProduct}
                 />
             )}
-
+            {/* דיאלוג לא ניתן למחוק פריט שהוזמן */}
+<Dialog
+  open={cannotDeleteDialogOpen}
+  onClose={() => setCannotDeleteDialogOpen(false)}
+  aria-labelledby="cannot-delete-dialog-title"
+  className="delete-dialog"
+>
+  <DialogTitle id="cannot-delete-dialog-title" className="delete-dialog-title" style={{ backgroundColor: '#f8d7da', color: '#721c24' }}>
+    <WarningIcon className="warning-icon" style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+    {"לא ניתן למחוק לקוח"}
+  </DialogTitle>
+  <DialogContent style={{ padding: '20px' }}>
+    <DialogContentText id="cannot-delete-dialog-description" className="delete-dialog-content">
+      לא ניתן למחוק את הפריט "{productToDelete?.productName}" מכיוון שיש לו הזמנות במערכת.
+      <br />
+      יש למחוק קודם את כל ההזמנות הקשורות לפריט זה.
+    </DialogContentText>
+  </DialogContent>
+  <DialogActions className="delete-dialog-actions" style={{ padding: '16px', borderTop: '1px solid #e0e0e0' }}>
+    <Button 
+      onClick={() => setCannotDeleteDialogOpen(false)} 
+      color="primary" 
+      variant="contained" 
+      autoFocus
+    >
+      הבנתי
+    </Button>
+  </DialogActions>
+</Dialog>
             {/* דיאלוג אישור מחיקה */}
             <Dialog
                 open={deleteDialogOpen}
