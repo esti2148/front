@@ -14,11 +14,9 @@ import {
     Edit as EditIcon
 } from '@mui/icons-material';
 import './editAddSupplier.css';
-
 import { useDispatch } from "react-redux";
 // import { addSupplierThunk } from "../../../../redux/supplierSlice/addSupplierThunk";
 // import { updateSupplierThunk } from "../../../../redux/supplierSlice/updateSupplierThunk";
-
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -60,7 +58,9 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
         // שליחת הנתונים המעודכנים/החדשים לקומפוננטת האב
         onSave(newSupplier, isAdd);
     };
+    const handleUpdate =() =>{
 
+    }
     const handleClose = () => {
         onClose();
     };
@@ -211,7 +211,7 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleSave}
+                    onClick={isAdd? handleSave : handleUpdate(newSupplier.id)}
                     className="save-button"
                     startIcon={isAdd ? <AddIcon /> : <EditIcon />}
                 >
