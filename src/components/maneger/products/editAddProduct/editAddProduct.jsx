@@ -7,12 +7,14 @@ import {
 } from '@mui/material';
 import {
     Close as CloseIcon,
-    School as SchoolIcon,
-    LocationOn as LocationIcon,
-    Phone as PhoneIcon,
-    Email as EmailIcon,
-    AccountBalance as AccountBalanceIcon,
-    Store as StoreIcon
+    Inventory as InventoryIcon,  // שינוי: סמל מוצר במקום SchoolIcon
+    Description as DescriptionIcon,  // שינוי: סמל תיאור במקום StoreIcon
+    Straighten as StraightenIcon,  // שינוי: סמל מידה במקום LocationIcon
+    AttachMoney as AttachMoneyIcon,  // שינוי: סמל מחיר במקום PhoneIcon
+    LocalShipping as LocalShippingIcon,  // שינוי: סמל ספק במקום EmailIcon
+    Inventory2 as Inventory2Icon,  // שינוי: סמל מלאי במקום AccountBalanceIcon
+    Add as AddIcon,  // הוספה: סמל הוספה
+    Edit as EditIcon  // הוספה: סמל עריכה
 } from '@mui/icons-material';
 import './editAddProduct.css';
 import { useDispatch, useSelector } from "react-redux";
@@ -112,7 +114,17 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
             <DialogTitle className="dialog-title">
                 <div className="dialog-title-content">
                     <Typography variant="h5" component="div" className="dialog-heading">
-                        {isAdd ? "הוספת מוצר חדש" : "עריכת מוצר "}
+                        {isAdd ? (
+                            <Box display="flex" alignItems="center">
+                                <AddIcon style={{ marginLeft: '8px' }} />
+                                {"הוספת מוצר חדש"}
+                            </Box>
+                        ) : (
+                            <Box display="flex" alignItems="center">
+                                <EditIcon style={{ marginLeft: '8px' }} />
+                                {"עריכת מוצר"}
+                            </Box>
+                        )}
                     </Typography>
                     <IconButton
                         aria-label="close"
@@ -139,7 +151,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
-                                                <SchoolIcon color="primary" />
+                                                <InventoryIcon color="primary" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -160,7 +172,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <SchoolIcon color="primary" />
+                                            <InventoryIcon color="primary" />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -180,7 +192,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <StoreIcon color="primary" />
+                                            <DescriptionIcon color="primary" />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -200,7 +212,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <LocationIcon color="primary" />
+                                            <StraightenIcon color="primary" />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -220,7 +232,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <PhoneIcon color="primary" />
+                                            <AttachMoneyIcon color="primary" />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -240,7 +252,13 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                     value={product.namePurveyor}
                                      onChange={x =>
                                      setnewProduct({ ...product, namePurveyor: x.target.value })
-                                     } >
+                                     }
+                                     startAdornment={
+                                        <InputAdornment position="start">
+                                            <LocalShippingIcon color="primary" />
+                                        </InputAdornment>
+                                     }
+                                >
                                     { supplierList.map(supp => {
                                         return <MenuItem key={supp.id} value={supp.name}>{supp.name}</MenuItem>
 
@@ -263,7 +281,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <AccountBalanceIcon color="primary" />
+                                            <Inventory2Icon color="primary" />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -280,6 +298,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                     color="primary"
                     onClick={isAdd ? handleSave : handleEdit}
                     className="save-button"
+                    startIcon={isAdd ? <AddIcon /> : <EditIcon />}
                 >
                     {isAdd ? "הוסף פריט" : "עדכן פרטים"}
                 </Button>
@@ -287,6 +306,7 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
                     variant="outlined"
                     onClick={handleClose}
                     className="cancel-button"
+                    startIcon={<CloseIcon />}
                 >
                     ביטול
                 </Button>
@@ -294,4 +314,3 @@ export const EditAddProduct = ({ customer, onClose, isAdd, onSave }) => {
         </Dialog>
     );
 }
-
