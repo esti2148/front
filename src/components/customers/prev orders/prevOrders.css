@@ -1,0 +1,388 @@
+/* body{
+    direction: rtl;
+   margin-top: 200px;
+}
+.title{
+   
+    margin-right: 100px !important;
+}
+.titleSub{
+    color: rgb(113, 201, 230) !important;
+    font-size: 20px !important;
+}
+.title2{
+    color: rgb(61, 189, 231) !important;
+    font-size: 30px !important;
+
+} */
+/* ===== כללי ===== */
+.prev-orders-page {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    direction: rtl;
+  }
+  
+  .prev-orders-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .prev-orders-header h1 {
+    color: #3f51b5;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .prev-orders-header p {
+    color: #757575;
+    font-size: 1.1rem;
+  }
+  
+  /* ===== טבלת הזמנות ===== */
+  .orders-table-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orders-table th {
+    background-color: #f5f7ff;
+    color: #3f51b5;
+    font-weight: 600;
+    padding: 16px;
+    text-align: right;
+    border-bottom: 2px solid #e8eaf6;
+    font-size: 1rem;
+  }
+  
+  .orders-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e8eaf6;
+    color: #424242;
+    font-size: 0.95rem;
+  }
+  
+  /* כותרות טבלה */
+  .title2 {
+    background-color: #3f51b5 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 18px 16px !important;
+    text-align: right !important;
+    font-size: 1.05rem !important;
+  }
+  
+  /* שורת הזמנה */
+  .order-row {
+    transition: background-color 0.3s;
+  }
+  
+  .order-row:hover {
+    background-color: #f5f7ff;
+  }
+  
+  .order-row td:first-child {
+    width: 50px;
+  }
+  
+  /* כפתור הרחבה */
+  .expand-button {
+    background-color: #e8eaf6;
+    color: #3f51b5;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+  
+  .expand-button:hover {
+    background-color: #c5cae9;
+  }
+  
+  .expand-button svg {
+    font-size: 1.2rem;
+  }
+  
+  /* פרטי הזמנה */
+  .order-details {
+    background-color: #f9faff;
+    padding: 0;
+  }
+  
+  .order-details-content {
+    padding: 20px;
+  }
+  
+  .order-details-title {
+    color: #3f51b5;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  /* טבלת פריטים */
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  
+  .items-table th {
+    background-color: #e8eaf6;
+    color: #3f51b5;
+    font-weight: 600;
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #c5cae9;
+    font-size: 0.9rem;
+  }
+  
+  .items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e8eaf6;
+    color: #616161;
+    font-size: 0.9rem;
+  }
+  
+  .items-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* כותרות משנה */
+  .titleSub {
+    color: #3f51b5 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+  }
+  
+  /* סיכום הזמנה */
+  .order-summary {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 0;
+    border-top: 1px dashed #e0e0e0;
+  }
+  
+  .order-summary-item {
+    margin-left: 30px;
+    text-align: right;
+  }
+  
+  .order-summary-label {
+    color: #757575;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+  
+  .order-summary-value {
+    color: #3f51b5;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  
+  /* אין הזמנות */
+  .no-orders {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .no-orders-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #bdbdbd;
+  }
+  
+  .no-orders h2 {
+    color: #424242;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  .no-orders p {
+    color: #757575;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+  }
+  
+  .order-button {
+    background: linear-gradient(45deg, #3f51b5, #2196f3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+  }
+  
+  .order-button:hover {
+    background: linear-gradient(45deg, #303f9f, #1976d2);
+    box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  /* תאריכים */
+  .date-cell {
+    white-space: nowrap;
+  }
+  
+  /* סכום */
+  .amount-cell {
+    font-weight: 600;
+    color: #3f51b5;
+  }
+  
+  /* סטטוס הזמנה */
+  .status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .status-pending {
+    background-color: #fff8e1;
+    color: #ff8f00;
+  }
+  
+  .status-delivered {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .status-processing {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  /* רספונסיביות */
+  @media (max-width: 992px) {
+    .prev-orders-header h1 {
+      font-size: 2rem;
+    }
+    
+    .order-summary {
+      flex-wrap: wrap;
+    }
+    
+    .order-summary-item {
+      margin-bottom: 15px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .prev-orders-page {
+      padding: 30px 15px;
+    }
+    
+    .prev-orders-header h1 {
+      font-size: 1.8rem;
+    }
+    
+    .prev-orders-header p {
+      font-size: 1rem;
+    }
+    
+    .title2, .orders-table th {
+      font-size: 0.95rem !important;
+      padding: 14px 12px !important;
+    }
+    
+    .orders-table td {
+      padding: 14px 12px;
+      font-size: 0.9rem;
+    }
+    
+    .items-table th, .items-table td {
+      padding: 10px;
+      font-size: 0.85rem;
+    }
+    
+    .order-details-title {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .prev-orders-page {
+      padding: 20px 10px;
+    }
+    
+    .prev-orders-header h1 {
+      font-size: 1.6rem;
+    }
+    
+    /* טבלה רספונסיבית למסכים קטנים */
+    .orders-table, .orders-table thead, .orders-table tbody, 
+    .orders-table th, .orders-table td, .orders-table tr,
+    .items-table, .items-table thead, .items-table tbody,
+    .items-table th, .items-table td, .items-table tr {
+      display: block;
+    }
+    
+    .orders-table thead tr, .items-table thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    .orders-table tr, .items-table tr {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .orders-table td, .items-table td {
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+      min-height: 30px;
+      border-bottom: none;
+    }
+    
+    .orders-table td:before, .items-table td:before {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight: 600;
+      color: #3f51b5;
+    }
+    
+    /* כותרות לטלפון */
+    .orders-table td:nth-of-type(3):before { content: "סה\"כ:"; }
+    .orders-table td:nth-of-type(4):before { content: "תאריך הזמנה:"; }
+    .orders-table td:nth-of-type(5):before { content: "תאריך אספקה:"; }
+    
+    .items-table td:nth-of-type(1):before { content: "שם מוצר:"; }
+    .items-table td:nth-of-type(2):before { content: "תיאור:"; }
+    .items-table td:nth-of-type(3):before { content: "מידה:"; }
+    .items-table td:nth-of-type(4):before { content: "כמות:"; }
+    .items-table td:nth-of-type(5):before { content: "סה\"כ:"; }
+    
+    .expand-button {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  

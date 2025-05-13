@@ -1,0 +1,430 @@
+    /* ===== סגנון בסיסי לדף ניהול ספקים ===== */
+    .suppliers-manager-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+        direction: rtl;
+
+        font-family: Arial, Helvetica, sans-serif;
+        color: #212121;
+    }
+
+
+
+
+
+    /* ===== כותרת ראשית ===== */
+    .suppliers-header-section {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+
+
+
+    .suppliers-header-section h1 {
+        color: #3f51b5;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+
+
+
+    .section-description {
+        color: #757575;
+        font-size: 1.1rem;
+    }
+
+    /* ===== סטטיסטיקות ===== */
+    .suppliers-statistics-section {
+        margin-bottom: 40px;
+    }
+
+    .statistics-container {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .statistic-item {
+        text-align: center;
+        padding: 0 20px;
+        flex: 1;
+    }
+
+    .statistic-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        background-color: #e3f2fd;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: #2196f3;
+    }
+
+    .statistic-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #3f51b5;
+        margin-bottom: 10px;
+    }
+
+    .statistic-label {
+        font-size: 1.1rem;
+        color: #757575;
+    }
+
+    /* ===== פילטרים וחיפוש ===== */
+    .suppliers-filter-section {
+        margin-bottom: 30px;
+    }
+
+    .filter-container {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .search-box {
+        flex: 2;
+        position: relative;
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #757575;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 15px 45px 15px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .search-input:focus {
+        border-color: #2196f3;
+        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+        outline: none;
+    }
+
+    .filter-box {
+        flex: 1;
+        position: relative;
+    }
+
+    .filter-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #757575;
+    }
+
+    .filter-select {
+        width: 100%;
+        padding: 15px 45px 15px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: white;
+        appearance: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-select:focus {
+        border-color: #2196f3;
+        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+        outline: none;
+    }
+
+    /* ===== רשימת ספקים ===== */
+    .suppliers-list-section {
+        margin-bottom: 40px;
+    }
+
+    .no-suppliers {
+        background-color: white;
+        border-radius: 16px;
+        padding: 60px 20px;
+        text-align: center;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        color: #757575;
+    }
+
+    .no-suppliers h3 {
+        color: #3f51b5;
+        font-size: 1.5rem;
+        margin: 20px 0 10px;
+    }
+
+    .no-suppliers p {
+        font-size: 1.1rem;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .suppliers-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* ===== כרטיסיית ספק ===== */
+    .supplier-card {
+        background-color: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .supplier-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    }
+
+    .supplier-header {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background-color 0.3s ease;
+    }
+
+    .supplier-header:hover {
+        background-color: #f5f7fa;
+    }
+
+    .supplier-expand-icon {
+        font-size: 1.5rem;
+        color: #2196f3;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+    }
+
+    .supplier-info {
+        flex: 2;
+    }
+
+    .supplier-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #3f51b5;
+        margin-bottom: 5px;
+    }
+
+    .supplier-company {
+        color: #757575;
+        font-size: 1rem;
+    }
+
+    .supplier-contact {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .supplier-phone, .supplier-email {
+      display: flex;
+      align-items: center;
+      color: #757575;
+      font-size: 0.95rem;
+    }
+
+    .contact-icon {
+      margin-left: 8px;
+      color: #2196f3;
+    }
+
+    /* ===== רשימת מוצרים של ספק ===== */
+    .supplier-products {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background-color: #f9fafc;
+    }
+
+    .supplier-products.open {
+      max-height: 1000px; /* גובה מקסימלי גדול מספיק */
+    }
+
+    .products-header {
+      padding: 20px 20px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .products-header h3 {
+      color: #3f51b5;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    .products-count {
+      background-color: #e3f2fd;
+      color: #2196f3;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .products-table-container {
+      padding: 0 20px 20px;
+      overflow-x: auto;
+    }
+
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .products-table th {
+      background-color: #e8eaf6;
+      color: #3f51b5;
+      font-weight: 600;
+      padding: 12px 15px;
+      text-align: right;
+      border-bottom: 2px solid #c5cae9;
+    }
+
+    .products-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #424242;
+    }
+
+    .products-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .products-table tr:hover td {
+      background-color: #f5f5f5;
+    }
+
+    .price-cell {
+      font-weight: 600;
+      color: #3f51b5;
+    }
+
+    .stock-cell {
+      font-weight: 600;
+    }
+
+    /* ===== אנימציות ===== */
+    .animate-fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== רספונסיביות ===== */
+    @media (max-width: 1200px) {
+      .suppliers-manager-container {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .statistics-container {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+  
+      .statistic-item {
+        flex: 1 0 40%;
+        margin-bottom: 15px;
+      }
+  
+      .supplier-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+  
+      .supplier-contact {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .filter-container {
+        flex-direction: column;
+      }
+  
+      .search-box, .filter-box {
+        width: 100%;
+      }
+  
+      .statistic-item {
+        flex: 1 0 100%;
+        margin-bottom: 15px;
+      }
+  
+      .supplier-contact {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .suppliers-header-section h1 {
+        font-size: 1.8rem;
+      }
+  
+      .section-description {
+        font-size: 1rem;
+      }
+  
+      .statistic-value {
+        font-size: 2rem;
+      }
+  
+      .products-table {
+        font-size: 0.85rem;
+      }
+  
+      .products-table th, .products-table td {
+        padding: 10px;
+      }
+    }

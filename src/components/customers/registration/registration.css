@@ -1,0 +1,219 @@
+
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  }
+  
+  .registration-card {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .registration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+  }
+  
+  .registration-content {
+    padding: 40px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .registration-header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .registration-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #3f51b5;
+    font-weight: 600;
+  }
+  
+  .registration-title-icon {
+    font-size: 2rem;
+  }
+  
+  .registration-stepper {
+    margin-top: 16px;
+  }
+  
+  .registration-divider {
+    margin: 24px 0 !important;
+  }
+  
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .registration-input {
+    transition: transform 0.2s ease;
+  }
+  
+  .registration-input:focus-within {
+    transform: translateY(-2px);
+  }
+  
+  .registration-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .back-button {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .save-button {
+    padding: 10px 24px;
+    background: linear-gradient(45deg, #3f51b5, #2196f3);
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .save-button:hover:not(:disabled) {
+    box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .registration-image {
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* מסך הצלחה */
+  .registration-success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+  }
+  
+  .success-paper {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .success-icon {
+    font-size: 4rem;
+    color: #4caf50;
+    background-color: rgba(76, 175, 80, 0.1);
+    padding: 16px;
+    border-radius: 50%;
+  }
+  
+  .success-title {
+    color: #4caf50;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .institute-id-alert {
+    width: 100%;
+    padding: 16px !important;
+  }
+  
+  .institute-id-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  
+  .institute-id-label {
+    font-weight: 500;
+  }
+  
+  .institute-id-chip {
+    font-weight: 600;
+    font-size: 1.1rem;
+    height: 36px;
+  }
+  
+  .institute-id-note {
+    text-align: center;
+    margin-top: 8px;
+    opacity: 0.8;
+  }
+  
+  .continue-button {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .continue-button:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* אנימציות */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* רספונסיביות */
+  @media (max-width: 600px) {
+    .registration-content {
+      padding: 24px !important;
+    }
+    
+    .registration-actions {
+      flex-direction: column-reverse;
+    }
+    
+    .back-button, .save-button {
+      width: 100%;
+    }
+    
+    .institute-id-container {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  

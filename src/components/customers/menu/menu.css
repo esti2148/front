@@ -1,0 +1,221 @@
+/* ===== כללי ===== */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .page-content {
+    flex: 1;
+  }
+  
+  /* ===== תפריט ראשי ===== */
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    direction: rtl;
+    transition: all 0.3s ease;
+  }
+  
+  .main-header.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .logo img {
+    height: 40px;
+    margin-left: 10px;
+  }
+  
+  .logo span {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #3f51b5;
+  }
+  
+  /* תפריט ניווט */
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-nav li {
+    margin: 0 15px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: #424242;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  .main-nav li:hover {
+    color: #2196f3;
+  }
+  
+  .main-nav li:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    right: 0;
+    background-color: #2196f3;
+    transition: width 0.3s;
+  }
+  
+  .main-nav li:hover:after {
+    width: 100%;
+  }
+  
+  /* אזור התחברות/הרשמה */
+  .auth-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .user-welcome {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .welcome-text {
+    color: #424242;
+    font-size: 0.95rem;
+  }
+  
+  /* כפתורים */
+  .primary-button, .secondary-button, .account-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .primary-button {
+    background: linear-gradient(45deg, #3f51b5, #2196f3);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+  }
+  
+  .primary-button:hover {
+    background: linear-gradient(45deg, #303f9f, #1976d2);
+    box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .secondary-button {
+    background-color: transparent;
+    color: #3f51b5;
+    border: 1px solid #3f51b5;
+  }
+  
+  .secondary-button:hover {
+    background-color: rgba(63, 81, 181, 0.1);
+  }
+  
+  .account-button {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: none;
+  }
+  
+  .account-button:hover {
+    background-color: #bbdefb;
+  }
+  
+  /* רספונסיביות */
+  @media (max-width: 992px) {
+    .main-header {
+      padding: 15px 20px;
+    }
+    
+    .main-nav li {
+      margin: 0 10px;
+      font-size: 1rem;
+    }
+    
+    .primary-button, .secondary-button, .account-button {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-header {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .logo {
+      margin-bottom: 10px;
+    }
+    
+    .main-nav {
+      order: 3;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .main-nav ul {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .main-nav li {
+      margin: 5px 10px;
+    }
+    
+    .auth-section {
+      order: 2;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .main-header {
+      padding: 10px 15px;
+    }
+    
+    .logo img {
+      height: 30px;
+    }
+    
+    .logo span {
+      font-size: 1.2rem;
+    }
+    
+    .auth-buttons {
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .user-welcome {
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-start;
+    }
+  }
+  
