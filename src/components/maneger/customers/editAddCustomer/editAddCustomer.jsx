@@ -129,8 +129,9 @@ import React, { useEffect, useState } from "react";
 import {
     Dialog, DialogTitle, DialogContent, DialogActions,
     Button, TextField, Grid, Typography, IconButton,
-    Paper, Slide, InputAdornment
+    Paper, Slide, InputAdornment, Box
 } from '@mui/material';
+
 import {
     Close as CloseIcon,
     School as SchoolIcon,
@@ -138,7 +139,9 @@ import {
     Phone as PhoneIcon,
     Email as EmailIcon,
     AccountBalance as AccountBalanceIcon,
-    Store as StoreIcon
+    Store as StoreIcon,
+    Add as AddIcon,  // הוספה: סמל הוספה
+    Edit as EditIcon  // הוספה: סמל עריכה
 } from '@mui/icons-material';
 import './editAddCustomer.css';
 import { useDispatch } from "react-redux";
@@ -213,9 +216,19 @@ export const EditAddCustomer = ({ customer, onClose, isAdd, onSave }) => {
         >
             <DialogTitle className="dialog-title">
                 <div className="dialog-title-content">
-                    <Typography variant="h5" component="div" className="dialog-heading">
-                        {isAdd ? "הוספת לקוח חדש" : "עריכת פרטי לקוח"}
-                    </Typography>
+                <Typography variant="h5" component="div" className="dialog-heading">
+    {isAdd ? (
+        <Box display="flex" alignItems="center">
+            <AddIcon style={{ marginLeft: '8px' }} />
+            {"הוספת לקוח חדש"}
+        </Box>
+    ) : (
+        <Box display="flex" alignItems="center">
+            <EditIcon style={{ marginLeft: '8px' }} />
+            {"עריכת לקוח"}
+        </Box>
+    )}
+</Typography>
                     <IconButton
                         aria-label="close"
                         onClick={handleClose}
@@ -388,6 +401,7 @@ export const EditAddCustomer = ({ customer, onClose, isAdd, onSave }) => {
                     variant="outlined"
                     onClick={handleClose}
                     className="cancel-button"
+                    startIcon={<CloseIcon />}
                 >
                     ביטול
                 </Button>
