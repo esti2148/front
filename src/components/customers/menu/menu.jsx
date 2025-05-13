@@ -58,7 +58,7 @@ export const Menu = () => {
                             <button className="secondary-button" onClick={() => navigate("login")}>
                                 התחברות
                             </button>
-                            <button className="primary-button" onClick={() => navigate("registration")}>
+                            <button className="primary-button" debugger onClick={() =>{  if (isExist) navigate("registration")}}>
                                 הרשמה
                             </button>
                         </div>
