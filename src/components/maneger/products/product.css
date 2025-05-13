@@ -1,5 +1,3 @@
-
-
                     /* ===== סגנון בסיסי לדף ניהול מוצרים ===== */
                     .products-manager-container {
                         max-width: 1200px;
@@ -7,13 +5,9 @@
                         padding: 24px;
                         direction: rtl;
                         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
                         background-color: #f8f9fa;
                         min-height: 100vh;
                     }
-
-
-
 
                     /* ===== כותרת ראשית ===== */
                     .products-header-section {
@@ -21,14 +15,10 @@
                         text-align: center;
                         background: linear-gradient(to right, #4568dc, #b06ab3);
                         border-radius: 16px;
-
-
-
                         padding: 30px;
                         color: white;
                         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
                     }
-
 
                     .products-header-section h1 {
                         color: white;
@@ -51,16 +41,13 @@
                         padding: 12px 24px;
                         font-size: 1rem;
                         display: flex;
-
                         align-items: center;
-
                         gap: 8px;
                         cursor: pointer;
                         margin: 20px auto 0;
                         transition: all 0.3s ease;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                     }
-
 
                     .add-product-button:hover {
                         background-color: #388e3c;
@@ -75,8 +62,6 @@
 
                     .statistics-container {
                         display: flex;
-
-
                         justify-content: space-between;
                         background-color: white;
                         border-radius: 16px;
@@ -85,13 +70,9 @@
                         transition: transform 0.3s ease;
                     }
 
-
-
-
                     .statistics-container:hover {
                         transform: translateY(-5px);
                     }
-
 
                     .statistic-item {
                         text-align: center;
@@ -118,7 +99,6 @@
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
-
                         justify-content: center;
                         font-size: 2rem;
                         color: #1976d2;
@@ -126,16 +106,10 @@
                         transition: all 0.3s ease;
                     }
 
-
-
-
-
                     .statistic-item:hover .statistic-icon {
                         transform: scale(1.1);
                         box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
                     }
-
-
 
                     .statistic-value {
                         font-size: 2.5rem;
@@ -145,14 +119,10 @@
                         transition: all 0.3s ease;
                     }
 
-
-
                     .statistic-item:hover .statistic-value {
                         color: #303f9f;
                         transform: scale(1.05);
                     }
-
-
 
                     .statistic-label {
                         font-size: 1.1rem;
@@ -160,21 +130,14 @@
                         transition: color 0.3s ease;
                     }
 
-
-
                     .statistic-item:hover .statistic-label {
                         color: #424242;
                     }
-
-
 
                     /* ===== פילטרים וחיפוש ===== */
                     .products-filter-section {
                         margin-bottom: 30px;
                     }
-
-
-
 
                     .filter-container {
                         display: flex;
@@ -187,15 +150,10 @@
                         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
                     }
 
-
-
                     .search-box {
                         flex: 2;
                         position: relative;
                     }
-
-
-
 
                     .search-icon {
                         position: absolute;
@@ -204,8 +162,6 @@
                         transform: translateY(-50%);
                         color: #757575;
                     }
-
-
 
                     .search-input {
                         width: 100%;
@@ -218,9 +174,6 @@
                         transition: all 0.3s ease;
                     }
 
-
-
-
                     .search-input:focus {
                         border-color: #2196f3;
                         box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
@@ -228,20 +181,10 @@
                         background-color: white;
                     }
 
-
-
-
-
-
-
-
-
                     .filter-box {
                         flex: 1;
                         position: relative;
                     }
-
-
 
                     .filter-icon {
                         position: absolute;
@@ -251,8 +194,6 @@
                         color: #757575;
                         pointer-events: none;
                     }
-
-
 
                     .filter-select {
                         width: 100%;
@@ -266,16 +207,12 @@
                         transition: all 0.3s ease;
                     }
 
-
-
-
                     .filter-select:focus {
                         border-color: #2196f3;
                         box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
                         outline: none;
                         background-color: white;
                     }
-
 
                     /* ===== טבלת מוצרים ===== */
                     .products-table-container {
@@ -293,21 +230,10 @@
                     }
 
                     .table-header-row {
-
                         background-color: #e8eaf6;
                     }
 
                     .table-header-cell {
-
-
-
-
-
-
-
-
-
-
                         color: #3f51b5 !important;
                         font-weight: 600 !important;
                         padding: 16px !important;
@@ -317,57 +243,33 @@
                     }
 
                     .table-row {
-
                         transition: background-color 0.3s ease;
                     }
 
                     .table-row:hover {
-
                         background-color: #f5f7fa;
                     }
 
                     .table-row td {
-
-
-
                         padding: 16px !important;
                         text-align: center !important;
                         border-bottom: 1px solid #e0e0e0 !important;
                     }
 
-
-
-
-
-
                     .id-chip {
-
-
-
-
                         font-weight: 600 !important;
                     }
-
-
-
-
 
                     .institute-name-container {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-
                     }
 
                     .institute-name {
-
                         font-weight: 500;
                         color: #3f51b5;
                     }
-
-
-
-
 
                     .action-buttons {
                         display: flex;
@@ -375,50 +277,33 @@
                         gap: 8px;
                     }
 
-
-
-
-
                     .edit-button, .delete-button {
                         transition: transform 0.3s ease, box-shadow 0.3s ease !important;
                     }
-
-
-
-
 
                     .edit-button:hover, .delete-button:hover {
                         transform: translateY(-3px);
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
                     }
 
-
-
                     /* ===== מצב ללא מוצרים ===== */
                     .no-data-cell {
                         padding: 60px 20px !important;
                     }
-
 
                     .no-data-container {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-
                         gap: 16px;
                     }
-
-
-
 
                     .no-data-icon {
                         font-size: 3rem;
                         color: #9e9e9e;
                         margin-bottom: 16px;
                     }
-
-
 
                     /* ===== דיאלוג מחיקה ===== */
                     .delete-dialog-title {
@@ -427,24 +312,15 @@
                         padding: 16px;
                     }
 
-
-
-
                     .warning-icon {
                         margin-left: 8px;
                         vertical-align: middle;
                     }
 
-
-
                     .delete-dialog-content {
                         padding: 20px;
                         color: #424242;
                     }
-
-
-
-
 
                     .delete-dialog-actions {
                         padding: 16px;
@@ -455,16 +331,10 @@
                     .customers-header-card {
                         margin-bottom: 24px;
                         border-radius: 16px;
-
-
-
                         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
                         background: linear-gradient(to right, #4568dc, #b06ab3);
                         color: white;
                     }
-
-
-
 
                     .customers-header {
                         display: flex;
@@ -473,14 +343,11 @@
                         padding: 16px;
                     }
 
-
-
                     .header-title {
                         display: flex;
                         align-items: center;
                         gap: 16px;
                     }
-
 
                     .header-icon {
                         font-size: 2rem;
@@ -488,15 +355,9 @@
 
                     .header-actions {
                         display: flex;
-
                         align-items: center;
-
                         gap: 16px;
                     }
-
-
-
-
 
                     .search-field {
                         background-color: rgba(255, 255, 255, 0.9);
@@ -504,57 +365,33 @@
                         width: 300px;
                     }
 
-
-
-
-
-
-
                     .refresh-button {
                         background-color: rgba(255, 255, 255, 0.2) !important;
                         color: white !important;
                     }
-
-
 
                     .add-button {
                         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
                         transition: transform 0.3s ease, box-shadow 0.3s ease !important;
                     }
 
-
-
-
-
-
                     .add-button:hover {
                         transform: translateY(-3px);
                         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
                     }
-
-
-
-
 
                     /* ===== אנימציות ===== */
                     .animate-fade-in {
                         animation: fadeIn 1s ease forwards;
                     }
 
-
-
-
                     .delay-1 {
                         animation-delay: 0.2s;
                     }
 
-
-
-
                     .delay-2 {
                         animation-delay: 0.4s;
                     }
-
 
                     .delay-3 {
                         animation-delay: 0.6s;
@@ -590,9 +427,7 @@
                         .customers-header {
                             flex-direction: column;
                             gap: 16px;
-
                         }
-
 
                         .header-actions {
                             width: 100%;
@@ -601,22 +436,13 @@
                     }
 
                     @media (max-width: 768px) {
-
-
                         .filter-container {
                             flex-direction: column;
                         }
 
-
-
-
                         .search-box, .filter-box {
                             width: 100%;
                         }
-
-
-
-
 
                         .statistic-item {
                             flex: 1 0 100%;
