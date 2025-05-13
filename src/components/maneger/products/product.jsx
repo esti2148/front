@@ -228,7 +228,7 @@ export const ProductManeger = () => {
             setProductToDelete(null);
           }
           else{
-            alert("לא ניתן למחוק פריט שנמכר בהזמנות")
+            alert(" .לא ניתן למחוק פריט שנמכר בהזמנות")
           }
         }
     };
