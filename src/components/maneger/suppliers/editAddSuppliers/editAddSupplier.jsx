@@ -51,6 +51,7 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
     }, [supplier]);
 
     const handleSave = () => {
+        debugger
         // בדיקת תקינות הנתונים
         if (!newSupplier.name.trim() || !newSupplier.companyName.trim()) {
             alert('נא להזין שם ספק ושם חברה');
@@ -62,13 +63,30 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
         onSave(newSupplier, isAdd);
         onClose();
     };
+
+    // const handleEdit = async () => {
+    //     let id = product.id;
+    //     let name = product.namePurveyor;
+    //     const namee = await dispatch(getByNameSuppliersThunk(name));
+    //     if (namee.payload != undefined) {
+    //       dispatch(
+    //         updateProductThunk({
+    //           id: id,
+    //           product: { ...product, idPurveyor: namee.payload.id },
+    //         })
+    //       );
+    //       //dispatch(getProductThunk());
+    //       onClose();
+    //     }
+    //   };
     const handleUpdate = () => {
+        debugger;
         let id = newSupplier.id;
         dispatch(updateSupplierThunk({id,newSupplier}));
         onClose();
     }
     const handleClose = () => {
-        onClose();
+      onClose() ;
     };
 
     return (
@@ -217,7 +235,7 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={isAdd ? handleSave : handleUpdate(newSupplier.id)}
+                    onClick={isAdd ? handleSave : handleUpdate}
                     className="save-button"
                     startIcon={isAdd ? <AddIcon /> : <EditIcon />}
                 >
