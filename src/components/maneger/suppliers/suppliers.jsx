@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getSuppliersThunk } from "../../../redux/supplierSlice/getSuppliersThunk"
-import { FaTruck, FaBoxOpen, FaPhoneAlt, FaEnvelope, FaBuilding, FaUser, FaAngleDown, FaAngleUp, FaSearch, FaFilter } from "react-icons/fa";
+import { FaTruck, FaBoxOpen, FaPhoneAlt, FaEnvelope, FaBuilding, FaUser, FaAngleDown, FaAngleUp, FaSearch, FaFilter, FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import * as React from 'react';
 import './suppliers.css';
+import { EditAddSupplier } from "./editAddSuppliers/editAddSupplier";
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from "@mui/material";
 
 export const Supplier = (props) => {
     const [open, setOpen] = useState(false);
-    const {supplier} = props;
+    const { supplier, onEdit, onDelete } = props;
   
     return (
         <div className="supplier-card">
@@ -28,6 +30,26 @@ export const Supplier = (props) => {
                         <FaEnvelope className="contact-icon" />
                         {supplier.email}
                     </div>
+                </div>
+                <div className="supplier-actions">
+                    <button 
+                        className="action-button edit-button" 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onEdit(supplier);
+                        }}
+                    >
+                        <FaEdit />
+                    </button>
+                    <button 
+                        className="action-button delete-button" 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onDelete(supplier);
+                        }}
+                    >
+                        <FaTrash />
+                    </button>
                 </div>
             </div>
             
@@ -75,6 +97,11 @@ export default function SuppliersManeger() {
     const dispatch = useDispatch()
     const [searchTerm, setSearchTerm] = useState('');
     const [filterType, setFilterType] = useState('all');
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isAddMode, setIsAddMode] = useState(false);
+    const [selectedSupplier, setSelectedSupplier] = useState(null);
+    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+    const [supplierToDelete, setSupplierToDelete] = useState(null);
 
     useEffect(() => {
         dispatch(getSuppliersThunk())
@@ -92,11 +119,68 @@ export default function SuppliersManeger() {
         })
         : [];
 
+    const handleAddSupplier = () => {
+        setSelectedSupplier({
+            id: 0,
+            name: '',
+            companyName: '',
+            phone: '',
+            email: '',
+            products: []
+        });
+        setIsAddMode(true);
+        setIsDialogOpen(true);
+    };
+
+    const handleEditSupplier = (supplier) => {
+        setSelectedSupplier(supplier);
+        setIsAddMode(false);
+        setIsDialogOpen(true);
+    };
+
+    const handleDeleteClick = (supplier) => {
+        setSupplierToDelete(supplier);
+        setDeleteDialogOpen(true);
+    };
+
+    const handleDeleteConfirm = () => {
+        if (supplierToDelete) {
+            // כאן תוסיף את הלוגיקה למחיקת ספק
+            // dispatch(deleteSupplierThunk(supplierToDelete.id));
+            console.log("מחיקת ספק:", supplierToDelete.id);
+            setDeleteDialogOpen(false);
+            setSupplierToDelete(null);
+        }
+    };
+
+    const handleDeleteCancel = () => {
+        setDeleteDialogOpen(false);
+        setSupplierToDelete(null);
+    };
+
+    const handleSaveSupplier = (supplier, isAdd) => {
+        if (isAdd) {
+            // dispatch(addSupplierThunk(supplier));
+            console.log("הוספת ספק חדש:", supplier);
+        } else {
+            // dispatch(updateSupplierThunk(supplier));
+            console.log("עדכון ספק קיים:", supplier);
+        }
+        setIsDialogOpen(false);
+    };
+
+    const handleCloseDialog = () => {
+        setIsDialogOpen(false);
+    };
+
     return (
         <div className="suppliers-manager-container">
             <div className="suppliers-header-section">
                 <h1>ניהול ספקים</h1>
                 <p className="section-description">צפייה וניהול של ספקי החנות והמוצרים שלהם</p>
+                <button className="add-supplier-button" onClick={handleAddSupplier}>
+                    <FaPlus /> הוסף ספק חדש
+                </button>
             </div>
 
             <div className="suppliers-statistics-section">
@@ -179,11 +263,59 @@ export default function SuppliersManeger() {
                 ) : (
                     <div className="suppliers-list">
                         {filteredSuppliers.map((supplier) => (
-                            <Supplier key={supplier.id || supplier._id} supplier={supplier} />
+                            <Supplier 
+                                key={supplier.id || supplier._id} 
+                                supplier={supplier} 
+                                onEdit={handleEditSupplier}
+                                onDelete={handleDeleteClick}
+                            />
                         ))}
                     </div>
                 )}
             </div>
+
+            {isDialogOpen && (
+                <EditAddSupplier
+                    supplier={selectedSupplier}
+                    onClose={handleCloseDialog}
+                    isAdd={isAddMode}
+                    onSave={handleSaveSupplier}
+                />
+            )}
+
+            {/* דיאלוג אישור מחיקה */}
+            <Dialog
+                open={deleteDialogOpen}
+                onClose={handleDeleteCancel}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                className="delete-dialog"
+            >
+                <DialogTitle id="alert-dialog-title" className="delete-dialog-title">
+                    <FaTrash className="warning-icon" />
+                    {"אישור מחיקת ספק"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description" className="delete-dialog-content">
+                        האם אתה בטוח שברצונך למחוק את הספק "{supplierToDelete?.name}" מחברת "{supplierToDelete?.companyName}"?
+                        <br />
+                        פעולה זו אינה ניתנת לביטול.
+                        {supplierToDelete?.products.length > 0 && (
+                            <div className="warning-message">
+                                <strong>שים לב:</strong> לספק זה יש {supplierToDelete.products.length} מוצרים. מחיקת הספק תשפיע על מוצרים אלה.
+                            </div>
+                        )}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions className="delete-dialog-actions">
+                    <Button onClick={handleDeleteCancel} color="primary" variant="outlined">
+                        ביטול
+                    </Button>
+                    <Button onClick={handleDeleteConfirm} color="error" variant="contained" autoFocus>
+                        מחיקה
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     );
 }
