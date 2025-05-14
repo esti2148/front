@@ -14,11 +14,11 @@ import {
     Edit as EditIcon
 } from '@mui/icons-material';
 import './editAddSupplier.css';
-
 import { useDispatch } from "react-redux";
+import { addSuppliersThunk } from "../../../../redux/supplierSlice/addSupplierThunk";
+import { updateSupplierThunk } from "../../../../redux/supplierSlice/editSupplierThunk";
 // import { addSupplierThunk } from "../../../../redux/supplierSlice/addSupplierThunk";
 // import { updateSupplierThunk } from "../../../../redux/supplierSlice/updateSupplierThunk";
-
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -54,13 +54,19 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
         // בדיקת תקינות הנתונים
         if (!newSupplier.name.trim() || !newSupplier.companyName.trim()) {
             alert('נא להזין שם ספק ושם חברה');
-            return;
         }
-
-        // שליחת הנתונים המעודכנים/החדשים לקומפוננטת האב
+        else {
+            dispatch(addSuppliersThunk(newSupplier));
+        }
+       // שליחת הנתונים המעודכנים/החדשים לקומפוננטת האב
         onSave(newSupplier, isAdd);
+        onClose();
     };
-
+    const handleUpdate = () => {
+        let id = newSupplier.id;
+        dispatch(updateSupplierThunk({id,newSupplier}));
+        onClose();
+    }
     const handleClose = () => {
         onClose();
     };
@@ -211,7 +217,7 @@ export const EditAddSupplier = ({ supplier, onClose, isAdd, onSave }) => {
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleSave}
+                    onClick={isAdd ? handleSave : handleUpdate(newSupplier.id)}
                     className="save-button"
                     startIcon={isAdd ? <AddIcon /> : <EditIcon />}
                 >
