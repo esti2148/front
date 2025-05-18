@@ -21,7 +21,7 @@ body, html {
   height: 500px;
   border-radius: 16px;
   overflow: hidden;
-  background: linear-gradient(rgba(33, 150, 243, 0.7), rgba(63, 81, 181, 0.9)), url('../../img/shutterstock_145238494.jpg');
+  background: linear-gradient(rgba(33, 150, 243, 0.7), rgba(63, 81, 181, 0.9)), url('../../img/2.jpg');
   background-size: cover;
   background-position: center;
   margin-bottom: 24px;
@@ -280,19 +280,19 @@ body, html {
 }
 
 .delivery-icon {
-  background-image: url('../../img/shutterstock_145238494.jpg');
+  background-image: url('../../img/2.jpg');
 }
 
 .quality-icon {
-  background-image: url('../../img/shutterstock_145238494.jpg');
+  background-image: url('../../img/2.jpg');
 }
 
 .returns-icon {
-  background-image: url('../../img/shutterstock_145238494.jpg');
+  background-image: url('../../img/2.jpg');
 }
 
 .support-icon {
-  background-image: url('../../img/shutterstock_145238494.jpg');
+  background-image: url('../../img/2.jpg');
 }
 
 .benefit-card h3 {
@@ -365,7 +365,7 @@ body, html {
 
 /* ===== CTA Section ===== */
 .cta-section {
-  background: linear-gradient(rgba(33, 150, 243, 0.7), rgba(63, 81, 181, 0.9)), url('../../img/shutterstock_145238494.jpg');
+  background: linear-gradient(rgba(33, 150, 243, 0.7), rgba(63, 81, 181, 0.9)), url('../../img/2.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 16px;

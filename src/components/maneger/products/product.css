@@ -1,94 +1,36 @@
-                    /* ===== סגנון בסיסי לדף ניהול מוצרים ===== */
                     .products-manager-container {
-                        max-width: 1200px;
-                        margin: 0 auto;
-                        padding: 24px;
                         direction: rtl;
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        background-color: #f8f9fa;
+                        padding: 24px;
+                        background-color: #f5f7fa;
                         min-height: 100vh;
+                        font-family: Arial, Helvetica, sans-serif;
+                        color: #212121;
                     }
 
-                    /* ===== כותרת ראשית ===== */
-                    .products-header-section {
-                        margin-bottom: 30px;
-                        text-align: center;
-                        background: linear-gradient(to right, #4568dc, #b06ab3);
+                    .products-header-card {
+                        margin-bottom: 24px;
                         border-radius: 16px;
-                        padding: 30px;
+                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+                        overflow: hidden;
+                        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
                         color: white;
-                        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
                     }
 
-                    .products-header-section h1 {
-                        color: white;
-                        font-size: 2.2rem;
-                        margin-bottom: 10px;
-                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                    }
-
-                    .section-description {
-                        color: rgba(255, 255, 255, 0.9);
-                        font-size: 1.1rem;
-                        margin-bottom: 20px;
-                    }
-
-                    .add-product-button {
-                        background-color: #4caf50;
-                        color: white;
-                        border: none;
-                        border-radius: 25px;
-                        padding: 12px 24px;
-                        font-size: 1rem;
+                    .products-header {
                         display: flex;
                         align-items: center;
-                        gap: 8px;
-                        cursor: pointer;
-                        margin: 20px auto 0;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    }
-
-                    .add-product-button:hover {
-                        background-color: #388e3c;
-                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-                        transform: translateY(-2px);
-                    }
-
-                    /* ===== סטטיסטיקות ===== */
-                    .products-statistics-section {
-                        margin-bottom: 40px;
+                        padding: 20px 30px;
                     }
 
                     .statistics-container {
                         display: flex;
-                        justify-content: space-between;
-                        background-color: white;
-                        border-radius: 16px;
-                        padding: 30px;
-                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-                        transition: transform 0.3s ease;
+                        align-items: center;
+                        gap: 15px;
                     }
 
-                    .statistics-container:hover {
-                        transform: translateY(-5px);
-                    }
-
-                    .statistic-item {
-                        text-align: center;
-                        padding: 0 20px;
-                        flex: 1;
-                        position: relative;
-                    }
-
-                    .statistic-item:not(:last-child)::after {
-                        content: '';
-                        position: absolute;
-                        right: 0;
-                        top: 20%;
-                        height: 60%;
-                        width: 1px;
-                        background-color: #e0e0e0;
+                    .header-icon {
+                        font-size: 2.5rem;
+                        color: white;
                     }
 
                     .statistic-icon {
@@ -99,376 +41,305 @@
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        font-size: 2rem;
-                        color: #1976d2;
-                        box-shadow: 0 4px 10px rgba(25, 118, 210, 0.2);
-                        transition: all 0.3s ease;
+                        gap: 12px;
                     }
 
-                    .statistic-item:hover .statistic-icon {
-                        transform: scale(1.1);
-                        box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
-                    }
-
-                    .statistic-value {
-                        font-size: 2.5rem;
-                        font-weight: 700;
-                        color: #3f51b5;
-                        margin-bottom: 10px;
-                        transition: all 0.3s ease;
-                    }
-
-                    .statistic-item:hover .statistic-value {
-                        color: #303f9f;
-                        transform: scale(1.05);
-                    }
-
-                    .statistic-label {
-                        font-size: 1.1rem;
-                        color: #757575;
-                        transition: color 0.3s ease;
-                    }
-
-                    .statistic-item:hover .statistic-label {
-                        color: #424242;
-                    }
-
-                    /* ===== פילטרים וחיפוש ===== */
-                    .products-filter-section {
-                        margin-bottom: 30px;
-                    }
-
-                    .filter-container {
-                        display: flex;
-                        gap: 15px;
-                        align-items: center;
-                        flex-wrap: wrap;
-                        background-color: white;
-                        border-radius: 12px;
-                        padding: 20px;
-                        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-                    }
-
-                    .search-box {
-                        flex: 2;
-                        position: relative;
-                    }
-
-                    .search-icon {
-                        position: absolute;
-                        right: 15px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        color: #757575;
-                    }
-
-                    .search-input {
-                        width: 100%;
-                        padding: 15px 45px 15px 15px;
-                        border: 1px solid #e0e0e0;
+                    .search-field {
+                        min-width: 280px;
+                        background-color: rgba(255, 255, 255, 0.2);
                         border-radius: 8px;
-                        font-size: 1rem;
-                        background-color: #f5f7fa;
-                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-                        transition: all 0.3s ease;
                     }
 
-                    .search-input:focus {
+                    .search-field:focus-within {
+                        width: 300px;
                         border-color: #2196f3;
                         box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
-                        outline: none;
-                        background-color: white;
                     }
 
-                    .filter-box {
-                        flex: 1;
-                        position: relative;
+                    .refresh-button {
+                        background-color: rgba(255, 255, 255, 0.2);
+                        color: white;
                     }
 
-                    .filter-icon {
-                        position: absolute;
-                        right: 15px;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        color: #757575;
-                        pointer-events: none;
+                    .refresh-button:hover {
+                        background-color: rgba(255, 255, 255, 0.3);
                     }
 
-                    .filter-select {
-                        width: 100%;
-                        padding: 15px 45px 15px 15px;
-                        border: 1px solid #e0e0e0;
-                        border-radius: 8px;
-                        font-size: 1rem;
-                        background-color: #f5f7fa;
-                        appearance: none;
-                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-                        transition: all 0.3s ease;
+                    .add-button {
+                        background-color: #4caf50;
+                        box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
                     }
 
-                    .filter-select:focus {
-                        border-color: #2196f3;
-                        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
-                        outline: none;
-                        background-color: white;
+                    .add-button:hover {
+                        background-color: #43a047;
                     }
 
-                    /* ===== טבלת מוצרים ===== */
-                    .products-table-container {
-                        background-color: white;
-                        border-radius: 16px;
-                        overflow: hidden;
-                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-                        margin-bottom: 40px;
-                        animation: fadeIn 0.5s ease;
-                    }
+                    /* פתרון פשוט לכותרת הטבלה ולכפתורים */
 
-                    .products-table {
+                    /* עיצוב כללי של הטבלה */
+                    .products-list table {
                         width: 100%;
                         border-collapse: collapse;
+                        border-radius: 8px;
+                        overflow: hidden;
                     }
 
                     .table-header-row {
-                        background-color: #e8eaf6;
-                    }
-
-                    .table-header-cell {
-                        color: #3f51b5 !important;
-                        font-weight: 600 !important;
-                        padding: 16px !important;
-                        text-align: center !important;
-                        font-size: 1rem !important;
-                        border-bottom: 2px solid #c5cae9 !important;
-                    }
-
-                    .table-row {
-                        transition: background-color 0.3s ease;
-                    }
-
-                    .table-row:hover {
                         background-color: #f5f7fa;
                     }
 
-                    .table-row td {
-                        padding: 16px !important;
-                        text-align: center !important;
-                        border-bottom: 1px solid #e0e0e0 !important;
+                    .table-header-cell {
+                        position: sticky;
+                        top: 0;
+                        z-index: 10;
+                        background-color: #f5f7fa;
+                        color: #3f51b5;
+                        font-weight: 600;
+                        padding: 16px;
+                        text-align: center;
+                        border-bottom: 2px solid #e0e0e0;
+                        transition: background-color 0.3s;
+                    }
+
+                    .table-row {
+                        transition: background-color 0.3s;
+                    }
+
+                    .table-row:hover {
+                        background-color: #f0f4ff;
+                    }
+
+                    .edit-button {
+                        background-color: #2196f3;
+                        color: white;
+                    }
+
+                    .delete-button {
+                        background-color: #f44336;
+                        color: white;
                     }
 
                     .id-chip {
-                        font-weight: 600 !important;
+                        background-color: #e3f2fd;
+                        color: #1976d2;
+                        font-weight: 600;
+                        border: none;
                     }
 
-                    .institute-name-container {
+                    .institute-name-cell {
+                        font-weight: 600;
+                    }
+
+
+
+
+
+
+
+
+
+                    .product-name-container {
                         display: flex;
                         align-items: center;
                         justify-content: center;
+                        gap: 12px;
                     }
 
                     .institute-name {
-                        font-weight: 500;
+                        font-weight: 600;
                         color: #3f51b5;
                     }
 
+
+
+                    .price-chip,
+                    .supplier-chip {
+                        transition: all 0.2s ease;
+                    }
+
+
+
+                    .price-chip:hover,
+                    .supplier-chip:hover {
+                        background-color: rgba(33, 150, 243, 0.1);
+                        transform: translateY(-2px);
+                    }
+
+
+                    /* כפתורי פעולה */
                     .action-buttons {
                         display: flex;
                         justify-content: center;
-                        gap: 8px;
+                        gap: 10px;
                     }
 
-                    .edit-button, .delete-button {
-                        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+                    .edit-button {
+                        background-color: #2196f3;
+                        color: white;
                     }
 
-                    .edit-button:hover, .delete-button:hover {
-                        transform: translateY(-3px);
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                    .edit-button:hover {
+                        background-color: #bbdefb;
                     }
 
-                    /* ===== מצב ללא מוצרים ===== */
+                    .delete-button {
+                        background-color: #f44336;
+                        color: white;
+                    }
+
+
+
+                    .delete-button:hover {
+                        transform: translateY(-2px);
+                        background-color: rgba(244, 67, 54, 0.9);
+                    }
+
+
+
+
+                    /* תא ללא נתונים */
                     .no-data-cell {
-                        padding: 60px 20px !important;
+                        padding: 48px !important;
                     }
+
+
 
                     .no-data-container {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        justify-content: center;
                         gap: 16px;
                     }
 
+
+
+
+
+
+
+
+
                     .no-data-icon {
-                        font-size: 3rem;
+                        font-size: 4rem;
                         color: #9e9e9e;
-                        margin-bottom: 16px;
+                        opacity: 0.5;
                     }
 
-                    /* ===== דיאלוג מחיקה ===== */
+
+
+
+
+
+
+                    .clear-search-button {
+                        margin-top: 15px;
+                        background-color: #2196f3;
+                        color: white;
+                        padding: 8px 16px;
+                        border-radius: 20px;
+                    }
+
+                    .clear-search-button:hover {
+                        background-color: #1976d2;
+                    }
+
+                    /* דיאלוג מחיקה */
                     .delete-dialog-title {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        color: #f44336;
                         background-color: #ffebee;
-                        color: #d32f2f;
-                        padding: 16px;
+                        padding: 16px 24px;
                     }
 
                     .warning-icon {
-                        margin-left: 8px;
-                        vertical-align: middle;
+                        color: #f44336;
                     }
 
                     .delete-dialog-content {
-                        padding: 20px;
-                        color: #424242;
+                        padding: 24px;
                     }
 
                     .delete-dialog-actions {
-                        padding: 16px;
-                        border-top: 1px solid #e0e0e0;
-                    }
-
-                    /* ===== כותרת ופעולות ===== */
-                    .customers-header-card {
-                        margin-bottom: 24px;
-                        border-radius: 16px;
-                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-                        background: linear-gradient(to right, #4568dc, #b06ab3);
-                        color: white;
-                    }
-
-                    .customers-header {
+                        padding: 16px 24px;
                         display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 16px;
+                        gap: 12px;
+                        background-color: #fafafa;
+                        border-top: 1px solid #f0f0f0;
                     }
 
-                    .header-title {
-                        display: flex;
-                        align-items: center;
-                        gap: 16px;
-                    }
 
-                    .header-icon {
-                        font-size: 2rem;
-                    }
 
-                    .header-actions {
-                        display: flex;
-                        align-items: center;
-                        gap: 16px;
-                    }
 
-                    .search-field {
-                        background-color: rgba(255, 255, 255, 0.9);
-                        border-radius: 8px;
-                        width: 300px;
-                    }
-
-                    .refresh-button {
-                        background-color: rgba(255, 255, 255, 0.2) !important;
-                        color: white !important;
-                    }
-
-                    .add-button {
-                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
-                        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-                    }
-
-                    .add-button:hover {
-                        transform: translateY(-3px);
-                        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
-                    }
-
-                    /* ===== אנימציות ===== */
-                    .animate-fade-in {
-                        animation: fadeIn 1s ease forwards;
-                    }
-
-                    .delay-1 {
-                        animation-delay: 0.2s;
-                    }
-
-                    .delay-2 {
-                        animation-delay: 0.4s;
-                    }
-
-                    .delay-3 {
-                        animation-delay: 0.6s;
-                    }
-
+                    /* אנימציות */
                     @keyframes fadeIn {
-                        from { opacity: 0; transform: translateY(20px); }
-                        to { opacity: 1; transform: translateY(0); }
-                    }
+                        from {
+                            opacity: 0;
+                        }
 
-                    /* ===== רספונסיביות ===== */
-                    @media (max-width: 1200px) {
-                        .products-manager-container {
-                            padding: 20px;
+                        to {
+                            opacity: 1;
                         }
                     }
 
-                    @media (max-width: 992px) {
-                        .statistics-container {
-                            flex-wrap: wrap;
-                            gap: 20px;
+
+
+
+                    @keyframes slideUp {
+                        from {
+                            transform: translateY(20px);
+                            opacity: 0;
                         }
 
-                        .statistic-item {
-                            flex: 1 0 40%;
-                            margin-bottom: 15px;
+                        to {
+                            transform: translateY(0);
+                            opacity: 1;
                         }
+                    }
 
-                        .statistic-item:not(:last-child)::after {
-                            display: none;
-                        }
 
-                        .customers-header {
+
+
+                    .products-list-section {
+                        animation: fadeIn 0.5s ease;
+                    }
+
+                    .products-table-container {
+                        animation: slideUp 0.5s ease;
+                    }
+
+                    /* רספונסיביות */
+                    @media (max-width: 960px) {
+                        .products-header {
                             flex-direction: column;
-                            gap: 16px;
+                            align-items: flex-start;
                         }
-
+                        
                         .header-actions {
-                            width: 100%;
                             justify-content: space-between;
+                        }
+                        
+                        .search-field {
+                            width: 100%;
+                        }
+                        
+                        .search-field:focus-within {
+                            width: 100%;
                         }
                     }
 
                     @media (max-width: 768px) {
-                        .filter-container {
-                            flex-direction: column;
+                        .customers-table {
+                            font-size: 0.85rem;
                         }
-
-                        .search-box, .filter-box {
-                            width: 100%;
-                        }
-
-                        .statistic-item {
-                            flex: 1 0 100%;
-                            margin-bottom: 15px;
-                        }
-
-                        .search-field {
-                            width: 100%;
-                        }
-                    }
-
-                    @media (max-width: 576px) {
-                        .products-header-section h1 {
-                            font-size: 1.8rem;
-                        }
-
-                        .section-description {
-                            font-size: 1rem;
-                        }
-
-                        .statistic-value {
-                            font-size: 2rem;
-                        }
-
+    
                         .table-header-cell, .table-row td {
-                            padding: 12px 8px !important;
-                            font-size: 0.9rem !important;
+                            padding: 12px 8px;
+                        }
+    
+                        .action-buttons {
+                            flex-direction: column;
+                            gap: 4px;
                         }
                     }

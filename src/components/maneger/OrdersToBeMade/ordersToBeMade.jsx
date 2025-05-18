@@ -1,19 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import './ordersToBeMade.css'
 import { FaShoppingBag, FaCheck, FaTimes, FaSpinner, FaSearch, FaFilter, FaBoxOpen, FaShippingFast, FaRegClock } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { getOrderThunk } from '../../../redux/orderSlice/getOrderThunk'
 
 const OrdersToBeMade = () => {
-    // מידע לדוגמה - במציאות יגיע מהשרת
-    const [orders, setOrders] = useState([
-      { id: 1, customer: 'ישראל ישראלי', items: ['חולצה כחולה', 'מכנסיים שחורים'], date: '2023-06-15', status: 'pending', total: 199.90 },
-      { id: 2, customer: 'חיים כהן', items: ['שמלה אדומה', 'חצאית'], date: '2023-06-14', status: 'processing', total: 249.50 },
-      { id: 3, customer: 'שרה לוי', items: ['חולצה לבנה', 'ג׳ינס'], date: '2023-06-13', status: 'pending', total: 179.90 },
-      { id: 4, customer: 'רחל גולדברג', items: ['סוודר חורף', 'צעיף'], date: '2023-06-12', status: 'completed', total: 159.90 },
-    ])
 
+  const dispatch = useDispatch()
+ const ord=useSelector(state => state.Order.order)
+  useEffect(() => {
+    debugger
+    dispatch(getOrderThunk());
+  }, [dispatch]);
+
+  //  const order = useSelector(state => state.Order.order)
+
+    // מידע לדוגמה - במציאות יגיע מהשרת
+    // const [orders, setOrders] = useState([
+    //   { id: 1, customer: 'ישראל ישראלי', items: ['חולצה כחולה', 'מכנסיים שחורים'], date: '2023-06-15', status: 'pending', total: 199.90 },
+    //   { id: 2, customer: 'חיים כהן', items: ['שמלה אדומה', 'חצאית'], date: '2023-06-14', status: 'processing', total: 249.50 },
+    //   { id: 3, customer: 'שרה לוי', items: ['חולצה לבנה', 'ג׳ינס'], date: '2023-06-13', status: 'pending', total: 179.90 },
+    //   { id: 4, customer: 'רחל גולדברג', items: ['סוודר חורף', 'צעיף'], date: '2023-06-12', status: 'completed', total: 159.90 },
+    //  ]) 
+
+    const [orders, setOrders] = useState()
     const [loading, setLoading] = useState(false)
     const [filter, setFilter] = useState('all')
     const [searchTerm, setSearchTerm] = useState('')
+
 
     // פונקציה לטיפול בשינוי סטטוס הזמנה
     const handleStatusChange = (orderId, newStatus) => {
@@ -35,7 +49,7 @@ const OrdersToBeMade = () => {
     }
 
     // פילטור הזמנות לפי סטטוס וחיפוש
-    const filteredOrders = orders.filter(order => {
+    const filteredOrders = ord.filter(order => {
       const matchesFilter = filter === 'all' || order.status === filter
       const matchesSearch = order.customer.includes(searchTerm) || 
                             order.items.some(item => item.includes(searchTerm))
@@ -70,7 +84,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon pending-icon">
                 <FaRegClock />
               </div>
-              <div className="statistic-value">{orders.filter(o => o.status === 'pending').length}</div>
+              <div className="statistic-value">{ord.filter(o => o.status === 'pending').length}</div>
               <div className="statistic-label">ממתינות</div>
             </div>
           
@@ -78,7 +92,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon processing-icon">
                 <FaShippingFast />
               </div>
-              <div className="statistic-value">{orders.filter(o => o.status === 'processing').length}</div>
+              <div className="statistic-value">{ord.filter(o => o.status === 'processing').length}</div>
               <div className="statistic-label">בטיפול</div>
             </div>
           
@@ -86,7 +100,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon completed-icon">
                 <FaCheck />
               </div>
-              <div className="statistic-value">{orders.filter(o => o.status === 'completed').length}</div>
+              <div className="statistic-value">{ord.filter(o => o.status === 'completed').length}</div>
               <div className="statistic-label">הושלמו</div>
             </div>
           
@@ -94,7 +108,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon total-icon">
                 <FaBoxOpen />
               </div>
-              <div className="statistic-value">{orders.length}</div>
+              <div className="statistic-value">{ord.length}</div>
               <div className="statistic-label">סה"כ הזמנות</div>
             </div>
           </div>

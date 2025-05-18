@@ -41,7 +41,11 @@ export const customerSlice = createSlice({
       if (state.manager.instituteId == action.payload.instituteId && state.manager.instituteName == action.payload.instituteName)
         state.isManager = true
 
-    }
+    },
+    clearBasket: (state) => {
+      state.listProduct = [];
+    },
+
   },
 
 
@@ -126,5 +130,5 @@ export const customerSlice = createSlice({
     });
   }
 });
-export const { addToSal, changeCount, changeTotalSal, removeFromSal, checkManager } = customerSlice.actions;
+export const { addToSal, changeCount, changeTotalSal, removeFromSal, checkManager,clearBasket } = customerSlice.actions;
 
