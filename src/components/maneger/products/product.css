@@ -10,56 +10,44 @@
                     .products-header-card {
                         margin-bottom: 24px;
                         border-radius: 16px;
-                        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-                        background: white;
+                        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
                         overflow: hidden;
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    }
-
-                    .products-header-card:hover {
-                        transform: translateY(-4px);
-                        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+                        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+                        color: white;
                     }
 
                     .products-header {
                         display: flex;
-                        justify-content: space-between;
                         align-items: center;
-                        flex-wrap: wrap;
-                        gap: 16px;
+                        padding: 20px 30px;
                     }
 
-                    .header-title {
+                    .statistics-container {
                         display: flex;
                         align-items: center;
-                        gap: 12px;
-                    }
-
-                    .header-title h1 {
-                        color: #3f51b5;
-                        font-size: 2.2rem;
-                        margin-bottom: 10px;
+                        gap: 15px;
                     }
 
                     .header-icon {
                         font-size: 2.5rem;
-                        color: #3f51b5;
-                        background-color: #e8eaf6;
-                        padding: 10px;
-                        border-radius: 50%;
+                        color: white;
                     }
 
-                    .header-actions {
+                    .statistic-icon {
+                        width: 70px;
+                        height: 70px;
+                        margin: 0 auto 15px;
+                        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+                        border-radius: 50%;
                         display: flex;
                         align-items: center;
                         gap: 12px;
                     }
 
                     .search-field {
-                        width: 250px;
-                        background-color: white;
+                        min-width: 280px;
+                        background-color: rgba(255, 255, 255, 0.2);
                         border-radius: 8px;
-                        transition: width 0.3s ease;
                     }
 
                     .search-field:focus-within {
@@ -69,25 +57,21 @@
                     }
 
                     .refresh-button {
-                        background-color: #e3f2fd;
-                        color: #2196f3;
-                        transition: transform 0.2s ease;
+                        background-color: rgba(255, 255, 255, 0.2);
+                        color: white;
                     }
 
                     .refresh-button:hover {
-                        transform: rotate(180deg);
-                        background-color: #bbdefb;
+                        background-color: rgba(255, 255, 255, 0.3);
                     }
 
                     .add-button {
-                        background: linear-gradient(45deg, #3f51b5, #2196f3);
-                        box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        background-color: #4caf50;
+                        box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
                     }
 
                     .add-button:hover {
-                        transform: translateY(-4px);
-                        box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
+                        background-color: #43a047;
                     }
 
                     /* פתרון פשוט לכותרת הטבלה ולכפתורים */
@@ -100,49 +84,29 @@
                         overflow: hidden;
                     }
 
-                    /* עיצוב כותרת הטבלה */
-                    .products-list table thead tr {
-                        background-color: #3f51b5;
-                        /* צבע כחול דומה לטבלת הלקוחות */
-                        color: white;
+                    .table-header-row {
+                        background-color: #f5f7fa;
                     }
 
-                    .products-list table th {
-                        padding: 12px 15px;
-                        text-align: center;
-                        color: white;
+                    .table-header-cell {
+                        position: sticky;
+                        top: 0;
+                        z-index: 10;
+                        background-color: #f5f7fa;
+                        color: #3f51b5;
                         font-weight: 600;
-                    }
-
-                    /* עיצוב תאי הטבלה */
-                    .products-list table td {
-                        padding: 10px;
+                        padding: 16px;
                         text-align: center;
-                        border-bottom: 1px solid #eee;
+                        border-bottom: 2px solid #e0e0e0;
+                        transition: background-color 0.3s;
                     }
 
-                    /* עיצוב שורות הטבלה */
-                    .products-list table tbody tr:hover {
-                        background-color: #f5f5f5;
+                    .table-row {
+                        transition: background-color 0.3s;
                     }
 
-                    /* עיצוב כפתורי פעולה */
-                    .product-actions {
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: center;
-                        gap: 8px;
-                    }
-
-                    .action-button {
-                        width: 36px;
-                        height: 36px;
-                        border-radius: 50%;
-                        border: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
+                    .table-row:hover {
+                        background-color: #f0f4ff;
                     }
 
                     .edit-button {
@@ -155,27 +119,15 @@
                         color: white;
                     }
 
-
-
-
-
-                    /* תאים מיוחדים */
-                    .product-id-cell {
-                        width: 100px;
+                    .id-chip {
+                        background-color: #e3f2fd;
+                        color: #1976d2;
+                        font-weight: 600;
+                        border: none;
                     }
 
-
-
-
-
-
-
-
-                    .id-chip {
+                    .institute-name-cell {
                         font-weight: 600;
-                        background-color: #e8eaf6 !important;
-                        color: #3f51b5 !important;
-                        border: none !important;
                     }
 
 
@@ -193,11 +145,9 @@
                         gap: 12px;
                     }
 
-
-
-                    .product-name {
-                        font-weight: 500;
-                        color: #212121;
+                    .institute-name {
+                        font-weight: 600;
+                        color: #3f51b5;
                     }
 
 
@@ -220,24 +170,7 @@
                     .action-buttons {
                         display: flex;
                         justify-content: center;
-                        gap: 8px;
-
-
-                    }
-
-
-                    .action-button {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 36px;
-                        height: 36px;
-                        border: none;
-
-                        border-radius: 50% !important;
-                        cursor: pointer;
-
-                        transition: transform 0.2s ease;
+                        gap: 10px;
                     }
 
                     .edit-button {
@@ -246,8 +179,7 @@
                     }
 
                     .edit-button:hover {
-                        transform: translateY(-2px);
-                        background-color: rgba(33, 150, 243, 0.9);
+                        background-color: #bbdefb;
                     }
 
                     .delete-button {
@@ -300,50 +232,18 @@
 
 
                     .clear-search-button {
-                        margin-top: 8px;
-                        background-color: transparent;
-                        color: #2196f3;
-                        border: 1px solid #2196f3;
+                        margin-top: 15px;
+                        background-color: #2196f3;
+                        color: white;
+                        padding: 8px 16px;
+                        border-radius: 20px;
                     }
 
                     .clear-search-button:hover {
-                        background-color: rgba(33, 150, 243, 0.1);
+                        background-color: #1976d2;
                     }
-
-                    /* מצבי טעינה ושגיאה */
-                    .loading-container,
-                    .error-container {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-
-
-
-
-
-
-                        padding: 48px;
-                        gap: 16px;
-                    }
-
-
-
-
-                    .retry-button {
-                        margin-top: 16px;
-                        background: linear-gradient(45deg, #3f51b5, #2196f3);
-                        color: white;
-                    }
-
-
-
 
                     /* דיאלוג מחיקה */
-                    .delete-dialog {
-                        direction: rtl;
-                    }
-
                     .delete-dialog-title {
                         display: flex;
                         align-items: center;
@@ -417,7 +317,6 @@
                         }
                         
                         .header-actions {
-                            width: 100%;
                             justify-content: space-between;
                         }
                         
@@ -430,24 +329,17 @@
                         }
                     }
 
-                    @media (max-width: 600px) {
-                        .products-manager-container {
-                            padding: 16px;
+                    @media (max-width: 768px) {
+                        .customers-table {
+                            font-size: 0.85rem;
                         }
-                        
-                        .header-title h1 {
-                            font-size: 1.75rem;
+    
+                        .table-header-cell, .table-row td {
+                            padding: 12px 8px;
                         }
-                        
-                        .header-icon {
-                            font-size: 2rem;
-                        }
-                        
+    
                         .action-buttons {
                             flex-direction: column;
-                        }
-                        
-                        .product-name-container {
-                            flex-direction: column;
+                            gap: 4px;
                         }
                     }

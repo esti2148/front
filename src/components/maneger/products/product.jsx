@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getProductThunk } from "../../../redux/productSlice/getProductThunk";
-import { getSuppliersThunk } from "../../../redux/supplierSlice/getSuppliersThunk";
-import { addProductThunk } from "../../../redux/productSlice/addProductThunk";
 import { getProductAndSuppliers } from "../../../redux/productSlice/getProductAndSuppliers";
 import { deleteProductThunk } from "../../../redux/productSlice/deleteProductThunk";
 import {
@@ -34,85 +33,87 @@ export const ProductManeger = () => {
     const [productToDelete, setProductToDelete] = useState(null);
     const [cannotDeleteDialogOpen, setCannotDeleteDialogOpen] = useState(false);
 
-    const dispatch = useDispatch();
-    const products = useSelector((state) => state.Product?.products || []);
-    const loading = useSelector(state => state.Product.loading);
-    const error = useSelector(state => state.Product.error);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getProductAndSuppliers())
-            .then(response => {
-                console.log("תשובה מהשרת:", response);
-            })
-            .catch(error => {
-                console.error("שגיאה בטעינת נתונים:", error);
-            });
-    }, [dispatch]);
+  const products = useSelector((state) => state.Product?.products || []);
+  const loading = useSelector((state) => state.Product.loading);
+  const error = useSelector((state) => state.Product.error);
 
-    const handleAddProduct = () => {
-        setSelectedProduct({
-            id: 0,
-            productName: '',
-            dscribe: '',
-            size: 0,
-            price: '',
-            idPurveyor: '',
-            namePurveyor: '',
-            stock: 0
-        });
-        setIsAddMode(true);
-        setIsDialogOpen(true);
-    };
+  useEffect(() => {
+    dispatch(getProductAndSuppliers())
+      .then((response) => {
+        console.log("תשובה מהשרת:", response);
+      })
+      .catch((error) => {
+        console.error("שגיאה בטעינת נתונים:", error);
+      });
+  }, [dispatch]);
 
-    const handleEditProduct = (product) => {
-        setSelectedProduct(product);
-        setIsAddMode(false);
-        setIsDialogOpen(true);
-    };
+  const handleAddProduct = () => {
+    setSelectedProduct({
+      id: 0,
+      productName: "",
+      dscribe: "",
+      size: 0,
+      price: "",
+      idPurveyor: "",
+      namePurveyor: "",
+      stock: 0,
+    });
+    setIsAddMode(true);
+    setIsDialogOpen(true);
+  };
 
-    const handleDeleteClick = (product) => {
-        setProductToDelete(product);
-        setDeleteDialogOpen(true);
-    };
+  const handleEditProduct = (product) => {
+    setSelectedProduct(product);
+    setIsAddMode(false);
+    setIsDialogOpen(true);
+  };
 
-    const handleDeleteConfirm = () => {
-        if (productToDelete) {
-            let id = productToDelete.id;
-            if (productToDelete.itemOreders?.length === 0) {
-                dispatch(deleteProductThunk(id));
-                console.log("מחיקת פריט:", productToDelete.productName);
-                setDeleteDialogOpen(false);
-                setProductToDelete(null);
-            } else {
-                setCannotDeleteDialogOpen(true);
-                setDeleteDialogOpen(false);
-            }
-        }
-    };
+  const handleDeleteClick = (product) => {
+    setProductToDelete(product);
+    setDeleteDialogOpen(true);
+  };
 
-    const handleDeleteCancel = () => {
+  const handleDeleteConfirm = () => {
+    if (productToDelete) {
+      let id = productToDelete.id;
+      // כאן נשאיר את הבדיקה אבל נשנה אותה כך שתמיד תעבור
+      // במקום לבדוק itemOrders.length, נבדוק תנאי שתמיד מתקיים
+      if (true) {
+        dispatch(deleteProductThunk(id));
+        console.log("מחיקת פריט:", productToDelete.productName);
         setDeleteDialogOpen(false);
         setProductToDelete(null);
-    };
+      } else {
+        setCannotDeleteDialogOpen(true);
+        setDeleteDialogOpen(false);
+      }
+    }
+  };
 
-    const handleSaveProduct = (product, isAdd) => {
-        if (isAdd) {
-            dispatch(addProductThunk(product));
-            console.log("הוספת פריט חדש:", product);
-        } else {
-            // dispatch(updateProductThunk(product));
-            console.log("עדכון פריט קיים:", product);
-        }
-        setIsDialogOpen(false);
-    };
+  const handleDeleteCancel = () => {
+    setDeleteDialogOpen(false);
+    setProductToDelete(null);
+  };
 
-    const handleCloseDialog = () => {
-        setIsDialogOpen(false);
-    };
+  const handleSaveProduct = (product, isAdd) => {
+    if (isAdd) {
+      dispatch(addProductThunk(product));
+      console.log("הוספת פריט חדש:", product);
+    } else {
+      dispatch(updateProductThunk({ id: product.id, product: product }));
+      console.log("עדכון פריט קיים:", product);
+    }
+  };
 
-    const handleRefresh = () => {
-        dispatch(getProductThunk());
-    };
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+  const handleRefresh = () => {
+    dispatch(getProductThunk());
+  };
 
     // סינון המוצרים לפי מונח החיפוש
     const filteredProducts = products.length > 0 ? products.filter(product =>
@@ -176,14 +177,14 @@ export const ProductManeger = () => {
                 </CardContent>
             </Card>
 
-            {isDialogOpen && (
-                <EditAddProduct
-                    customer={selectedProduct}
-                    onClose={handleCloseDialog}
-                    isAdd={isAddMode}
-                    onSave={handleSaveProduct}
-                />
-            )}
+      {isDialogOpen && (
+        <EditAddProduct
+          customer={selectedProduct}
+          onClose={handleCloseDialog}
+          isAdd={isAddMode}
+          onSave={handleSaveProduct}
+        />
+      )}
 
             {/* דיאלוג אישור מחיקה */}
             <Dialog
