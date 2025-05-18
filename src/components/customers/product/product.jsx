@@ -139,7 +139,7 @@ export const Product = (props) => {
             dispatch(changeTotalSal(newProd));
         } else {
             newProd = {
-                id: prod.id,
+                productId: prod.id,
                 productName: prod.productName,
                 dscribe: prod.dscribe,
                 size: prod.size,
@@ -152,9 +152,9 @@ export const Product = (props) => {
 
     return (
         <div className="product-card">
-            <div className="product-image">
-                <img src={`/images/products/${prod.id}.jpg`} alt={prod.productName} onError={(e) => {e.target.src = '/images/product-placeholder.jpg'}} />
-            </div>
+            {/* <div className="product-image">
+                <img src={`/images/products/${prod.id}.jpg`} alt={prod.productName} onError={(e) => {e.target.src = '/images/product-placeholder.jpg'}} /> 
+            </div> */}
             <div className="product-details">
                 <h3 className="product-name">{prod?.productName}</h3>
                 <p className="product-description">{prod?.dscribe}</p>
