@@ -16,7 +16,6 @@ import CollapsibleTable, {
 import { Product } from "../components/customers/product/product";
 import { MenuManeger } from "../components/maneger/menu/menu";
 import Home from "../components/customers/home/home";
-import HomeNew from "../components/customers/home/HomeNew";
 import { Login } from "@mui/icons-material";
 import OrdersToBeMade from "../components/maneger/OrdersToBeMade/ordersToBeMade";
 
