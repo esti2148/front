@@ -23,6 +23,8 @@ import {
 
 import './product.css';
 import { EditAddProduct } from "./editAddProduct/editAddProduct";
+import { addProductThunk } from "../../../redux/productSlice/addProductThunk";
+import { updateProductThunk } from "../../../redux/productSlice/editProductThunk";
 
 export const ProductManeger = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
