@@ -93,7 +93,7 @@
                         top: 0;
                         z-index: 10;
                         background-color: #f5f7fa;
-                        color: #3f51b5;
+                        color: #3f51b5 !important;
                         font-weight: 600;
                         padding: 16px;
                         text-align: center;
@@ -131,13 +131,6 @@
                     }
 
 
-
-
-
-
-
-
-
                     .product-name-container {
                         display: flex;
                         align-items: center;
@@ -149,8 +142,6 @@
                         font-weight: 600;
                         color: #3f51b5;
                     }
-
-
 
                     .price-chip,
                     .supplier-chip {
@@ -186,51 +177,25 @@
                         background-color: #f44336;
                         color: white;
                     }
-
-
-
                     .delete-button:hover {
                         transform: translateY(-2px);
                         background-color: rgba(244, 67, 54, 0.9);
                     }
-
-
-
-
                     /* תא ללא נתונים */
                     .no-data-cell {
                         padding: 48px !important;
                     }
-
-
-
                     .no-data-container {
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         gap: 16px;
                     }
-
-
-
-
-
-
-
-
-
                     .no-data-icon {
                         font-size: 4rem;
                         color: #9e9e9e;
                         opacity: 0.5;
                     }
-
-
-
-
-
-
-
                     .clear-search-button {
                         margin-top: 15px;
                         background-color: #2196f3;
