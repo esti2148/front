@@ -50,7 +50,7 @@ export const Order = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             setLoading(true);
-            debugger
+            
             dispatch(getProductThunk());
             setLoading(false);
         };

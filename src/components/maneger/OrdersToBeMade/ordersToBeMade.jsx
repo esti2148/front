@@ -3,6 +3,7 @@ import './ordersToBeMade.css'
 import { FaShoppingBag, FaCheck, FaTimes, FaSpinner, FaSearch, FaFilter, FaBoxOpen, FaShippingFast, FaRegClock } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { getOrderThunk } from '../../../redux/orderSlice/getOrderThunk'
+import { updateOrderThunk } from '../../../redux/orderSlice/updateOrderThunk'
 
 const OrdersToBeMade = () => {
 
@@ -13,16 +14,6 @@ const OrdersToBeMade = () => {
     dispatch(getOrderThunk());
   }, [dispatch]);
 
-  //  const order = useSelector(state => state.Order.order)
-
-    // מידע לדוגמה - במציאות יגיע מהשרת
-    // const [orders, setOrders] = useState([
-    //   { id: 1, customer: 'ישראל ישראלי', items: ['חולצה כחולה', 'מכנסיים שחורים'], date: '2023-06-15', status: 'pending', total: 199.90 },
-    //   { id: 2, customer: 'חיים כהן', items: ['שמלה אדומה', 'חצאית'], date: '2023-06-14', status: 'processing', total: 249.50 },
-    //   { id: 3, customer: 'שרה לוי', items: ['חולצה לבנה', 'ג׳ינס'], date: '2023-06-13', status: 'pending', total: 179.90 },
-    //   { id: 4, customer: 'רחל גולדברג', items: ['סוודר חורף', 'צעיף'], date: '2023-06-12', status: 'completed', total: 159.90 },
-    //  ]) 
-
     const [orders, setOrders] = useState()
     const [loading, setLoading] = useState(false)
     const [filter, setFilter] = useState('all')
@@ -30,13 +21,14 @@ const OrdersToBeMade = () => {
 
 
     // פונקציה לטיפול בשינוי סטטוס הזמנה
-    const handleStatusChange = (orderId, newStatus) => {
-      setOrders(orders.map(order => 
-        order.id === orderId ? { ...order, status: newStatus } : order
-      ))
-    
-      // כאן יש להוסיף קריאת API לעדכון הסטטוס בשרת
-    }
+    function handleStatusChange(order, newStatus) {
+      debugger
+     dispatch(updateOrderThunk({ newOrder:{...order, status : newStatus}, id: order.orderId  }))
+    // setOrders(orders.map(order => 
+    //   order.id === orderId ? { ...order, status: newStatus } : order
+    // ))
+    // כאן יש להוסיף קריאת API לעדכון הסטטוס בשרת
+  }
 
     // פונקציה לטעינת הזמנות מהשרת
     const fetchOrders = () => {
@@ -49,11 +41,16 @@ const OrdersToBeMade = () => {
     }
 
     // פילטור הזמנות לפי סטטוס וחיפוש
-    const filteredOrders = ord.filter(order => {
-      const matchesFilter = filter === 'all' || order.status === filter
-      const matchesSearch = order.customer.includes(searchTerm) || 
-                            order.items.some(item => item.includes(searchTerm))
-      return matchesFilter && matchesSearch
+    const filteredOrders = ord.filter((order,index) => {
+      console.log(index ,order);
+       const matchesFilter = filter === 'all' || order?.status === filter
+       console.log(matchesFilter);
+      // const matchesSearch = order?.customer?.includes(searchTerm) || 
+      //                       order.items.some(item => item?.includes(searchTerm))
+      //return matchesFilter// && matchesSearch
+
+      if(matchesFilter) //&& matchesSearch
+      return order
     })
 
     useEffect(() => {
@@ -63,10 +60,10 @@ const OrdersToBeMade = () => {
     // פונקציה להצגת סטטוס בעברית
     const getStatusText = (status) => {
       switch(status) {
-        case 'pending': return 'ממתינה'
-        case 'processing': return 'בטיפול'
-        case 'completed': return 'הושלמה'
-        case 'cancelled': return 'בוטלה'
+        case 0: return 'ממתינה'
+        case 1: return 'בטיפול'
+        case 2: return 'הושלמה'
+        case 3: return 'בוטלה'
         default: return status
       }
     }
@@ -84,7 +81,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon pending-icon">
                 <FaRegClock />
               </div>
-              <div className="statistic-value">{ord.filter(o => o.status === 'pending').length}</div>
+              <div className="statistic-value">{ord.filter(o => o?.status === 0).length}</div>
               <div className="statistic-label">ממתינות</div>
             </div>
           
@@ -92,7 +89,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon processing-icon">
                 <FaShippingFast />
               </div>
-              <div className="statistic-value">{ord.filter(o => o.status === 'processing').length}</div>
+              <div className="statistic-value">{ord.filter(o => o?.status === 1).length}</div>
               <div className="statistic-label">בטיפול</div>
             </div>
           
@@ -100,7 +97,7 @@ const OrdersToBeMade = () => {
               <div className="statistic-icon completed-icon">
                 <FaCheck />
               </div>
-              <div className="statistic-value">{ord.filter(o => o.status === 'completed').length}</div>
+              <div className="statistic-value">{ord.filter(o => o?.status === 2).length}</div>
               <div className="statistic-label">הושלמו</div>
             </div>
           
@@ -148,7 +145,7 @@ const OrdersToBeMade = () => {
         </div>
 
         <div className="orders-list-section">
-          {filteredOrders.length === 0 ? (
+          {filteredOrders?.length === 0 ? (
             <div className="no-orders">
               <FaShoppingBag size={50} />
               <h3>אין הזמנות לביצוע</h3>
@@ -156,64 +153,69 @@ const OrdersToBeMade = () => {
             </div>
           ) : (
             <div className="orders-grid">
-              {filteredOrders.map(order => (
-                <div key={order.id} className={`order-card ${order.status}`}>
+              {filteredOrders?.map(order => (
+                <div key={order?.id} className={`order-card ${order?.status}`}>
                   <div className="order-header">
-                    <div className="order-id">הזמנה #{order.id}</div>
-                    <div className={`order-status ${order.status}`}>
-                      {getStatusText(order.status)}
+                    <div className="order-id">הזמנה #{order?.orderId}</div>
+                    <div className={`order-status ${order?.status}`}>
+                      {getStatusText(order?.status)}
                     </div>
                   </div>
                 
                   <div className="order-details">
                     <div className="order-customer-info">
                       <div className="info-label">לקוח:</div>
-                      <div className="info-value">{order.customer}</div>
+                      <div className="info-value">{order?.instituteId}</div>
                     </div>
                   
                     <div className="order-date-info">
-                      <div className="info-label">תאריך:</div>
-                      <div className="info-value">{new Date(order.date).toLocaleDateString('he-IL')}</div>
+                      <div className="info-label">תאריך הזמנה:</div>
+                      <div className="info-value">{new Date(order?.orderDate).toLocaleDateString('he-IL')}</div>
                     </div>
-                  
+                    <div className="order-date-info">
+                      <div className="info-label">תאריך אספקה:</div>
+                      <div className="info-value">{new Date(order?.supplyDate)?.toLocaleDateString('he-IL')}</div>
+                    </div>
                     <div className="order-items-info">
                       <div className="info-label">פריטים:</div>
                       <ul className="items-list">
-                        {order.items.map((item, index) => (
-                          <li key={index}>{item}</li>
+                        {order?.itemOreders?.map((item, index) => (
+                          <li key={index}>{item.productName}</li>
                         ))}
                       </ul>
                     </div>
                   
                     <div className="order-total-info">
                       <div className="info-label">סה"כ:</div>
-                      <div className="info-value price-value">₪{order.total.toFixed(2)}</div>
+                      <div className="info-value price-value">₪{order?.toatlSum?.toFixed(2)}</div>
                     </div>
+
+                    
                   </div>
                 
                   <div className="order-actions">
-                    {order.status === 'pending' && (
+                    {order?.status === 0 && (
                       <button 
                         className="primary-button-new process-button"
-                        onClick={() => handleStatusChange(order.id, 'processing')}
+                        onClick={() => handleStatusChange(order, 1)}
                       >
                         <FaShippingFast /> התחל טיפול
                       </button>
                     )}
                   
-                    {order.status === 'processing' && (
+                    {order?.status === 1 && (
                       <button 
                         className="primary-button-new complete-button"
-                        onClick={() => handleStatusChange(order.id, 'completed')}
+                        onClick={() => handleStatusChange(order, 2)}
                       >
                         <FaCheck /> סמן כהושלם
                       </button>
                     )}
                   
-                    {order.status !== 'completed' && order.status !== 'cancelled' && (
+                    {order?.status !== 1 && order?.status !== 2 && (
                       <button 
                         className="secondary-button-new cancel-button"
-                        onClick={() => handleStatusChange(order.id, 'cancelled')}
+                        onClick={() => handleStatusChange(order,3)}
                       >
                         <FaTimes /> בטל הזמנה
                       </button>

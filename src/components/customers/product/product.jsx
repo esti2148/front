@@ -95,20 +95,23 @@ export const Product = (props) => {
     const dispatch = useDispatch();
     const isexist = useSelector(state => state.customer.isExist);
     const list = useSelector(state => state.customer.listProduct);
+    //const sal = useSelector(state => state.customer.listProduct);
     const [count, setCount] = useState(0);
     const [curent, setCurent] = useState({});
     
     useEffect(() => {
-        const c = list.find(x => x.id == prod.id);
+        const c = list.find(x => x.productId== prod.id);
         if (c != null) {
             setCurent(c);
             setCount(Number(c?.qty));
         }
+    //   if(prod)  dispatch(getProductThunk())
     }, []);
-    useEffect(() => {
-        debugger
-        dispatch(getProductThunk())
-    }, []);
+    // useEffect(() => {
+    //     debugger
+    //     dispatch(getProductThunk())
+    //     console.log(curent);
+    // }, []);
     const minus = () => {
         if (count > 0) {
             const cc = Number(count - 1);
