@@ -295,7 +295,8 @@ export const ShoppingBasket = () => {
             toatlSum: 0,
             orderDate: new Date(),
             supplyDate: date,
-            itemOreders: sal
+            itemOreders: sal,
+            status:0
         };
         
         dispatch(addOrderToCustomerThunk({ order, idCustomer }))
