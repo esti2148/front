@@ -287,6 +287,7 @@ export const ShoppingBasket = () => {
     };
 
     const saveOrder = () => {
+        debugger
         setIsSubmitting(true);
         
         var order = {
