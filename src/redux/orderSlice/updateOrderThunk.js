@@ -1,14 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const updateSupplierThunk = createAsyncThunk(
-    'updateSupplierThunk',
-    async ({id,newSupplier}) => {
+export const updateOrderThunk = createAsyncThunk(
+    'updateOrderThunk',
+    async ({newOrder,id}) => {
         debugger
 
-        const response = await fetch(`https://localhost:7267/api/Purveryors/update/${id}`,
+        const response = await fetch(`https://localhost:7267/api/Orders/upDate/${id}`,
             {
                 method: 'PUT',
-                body: JSON.stringify(newSupplier),
+                body: JSON.stringify(newOrder),
                 headers: {
                     'Content-type': 'application/json'
                 }

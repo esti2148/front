@@ -6,6 +6,7 @@ import * as React from 'react';
 import './suppliers.css';
 import { EditAddSupplier } from "./editAddSuppliers/editAddSupplier";
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from "@mui/material";
+import { deleteSupplierThunk } from "../../../redux/supplierSlice/delete Supplier Thunk";
 
 export const Supplier = (props) => {
     const [open, setOpen] = useState(false);
@@ -133,6 +134,7 @@ export default function SuppliersManeger() {
     };
 
     const handleEditSupplier = (supplier) => {
+        
         setSelectedSupplier(supplier);
         setIsAddMode(false);
         setIsDialogOpen(true);
@@ -146,7 +148,7 @@ export default function SuppliersManeger() {
     const handleDeleteConfirm = () => {
         if (supplierToDelete) {
             // כאן תוסיף את הלוגיקה למחיקת ספק
-            // dispatch(deleteSupplierThunk(supplierToDelete.id));
+            dispatch(deleteSupplierThunk(supplierToDelete.id));
             console.log("מחיקת ספק:", supplierToDelete.id);
             setDeleteDialogOpen(false);
             setSupplierToDelete(null);
@@ -159,6 +161,7 @@ export default function SuppliersManeger() {
     };
 
     const handleSaveSupplier = (supplier, isAdd) => {
+        debugger
         if (isAdd) {
             // dispatch(addSupplierThunk(supplier));
             console.log("הוספת ספק חדש:", supplier);
@@ -266,7 +269,7 @@ export default function SuppliersManeger() {
                             <Supplier 
                                 key={supplier.id || supplier._id} 
                                 supplier={supplier} 
-                                onEdit={handleEditSupplier}
+                                onEdit={() => handleEditSupplier(supplier)}
                                 onDelete={handleDeleteClick}
                             />
                         ))}

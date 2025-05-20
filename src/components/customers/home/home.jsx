@@ -179,7 +179,7 @@ export const Home = () => {
         </div>
         {!isExist && (
           <div className="hero-auth-prompt animate-fade-in delay-3">
-            <p>עדיין לא רשומים? <button className="text-button-white" onClick={() => navigate("registration")}>הירשמו עכשיו</button> וקבלו 10% הנחה בהזמנה הראשונה!</p>
+            <p>עדיין לא רשומים? <button className="text-button-white" onClick={() => navigate("registration")}>  הירשמו עכשיו</button>   ותהנו ממבצעים שאסור לפספס!!</p>
           </div>
         )}
       </div>

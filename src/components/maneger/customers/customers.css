@@ -1,165 +1,195 @@
 /* כללי */
 .customers-container {
-    direction: rtl;
-    padding: 24px;
-    background-color: #f5f7fa;
-    min-height: 100vh;
-  }
-  
-  /* כרטיס כותרת */
-  .customers-header-card {
-    margin-bottom: 24px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #ffffff, #f5f7fa);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .customers-header-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  }
-  
-  .customers-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .header-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .header-icon {
-    font-size: 2.5rem;
-    color: #3f51b5;
-  }
-  
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .search-field {
-    width: 250px;
-    background-color: white;
-    border-radius: 8px;
-    transition: width 0.3s ease;
-  }
-  
-  .search-field:focus-within {
-    width: 300px;
-  }
-  
-  .refresh-button {
-    background-color: #e3f2fd;
-    transition: transform 0.2s ease;
-  }
-  
-  .refresh-button:hover {
-    transform: rotate(180deg);
-  }
-  
-  .add-button {
-    background: linear-gradient(45deg, #2196f3, #3f51b5);
-    box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .add-button:hover {
-    transform: translateY(-4px) rotate(90deg);
-    box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
-  }
-  
-  /* טבלת לקוחות */
-  .table-container {
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .customers-table-container {
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  
-  .customers-table {
-    min-width: 800px;
-  }
-  
-  .table-header-row {
-    background: linear-gradient(90deg, #3f51b5, #2196f3);
-  }
-  
-  .table-header-cell {
-    color: white !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    padding: 16px !important;
-    text-align: center !important;
-  }
-  
-  .table-row {
-    transition: background-color 0.2s ease;
-  }
-  
-  .table-row:hover {
-    background-color: rgba(33, 150, 243, 0.05);
-  }
-  
-  .negative-balance-row {
-    background-color: rgba(244, 67, 54, 0.05);
-  }
-  
-  .negative-balance-row:hover {
-    background-color: rgba(244, 67, 54, 0.1);
-  }
-  
-  /* תאים מיוחדים */
-  .institute-id-cell {
-    width: 100px;
-  }
-  
-  .id-chip {
-    font-weight: 600;
-  }
-  
-  .institute-name-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  
-  .institute-avatar {
-    background: linear-gradient(45deg, #3f51b5, #2196f3);
-    color: white;
-    font-weight: 600;
-  }
-  
-  .institute-name {
+  direction: rtl;
+  padding: 24px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #212121;
+}
+
+/* כרטיס כותרת */
+.customers-header-card {
+  margin-bottom: 24px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  background: white;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customers-header-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.customers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title h1 {
+  color: #3f51b5;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.header-icon {
+  font-size: 2.5rem;
+  color: #3f51b5;
+  background-color: #e8eaf6;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-field {
+  width: 250px;
+  background-color: white;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.search-field:focus-within {
+  width: 300px;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+}
+
+.refresh-button {
+  background-color: #e3f2fd;
+  color: #2196f3;
+  transition: transform 0.2s ease;
+}
+
+.refresh-button:hover {
+  transform: rotate(180deg);
+  background-color: #bbdefb;
+}
+
+.add-button {
+  background: linear-gradient(45deg, #3f51b5, #2196f3);
+  box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(33, 150, 243, 0.4);
+}
+
+/* טבלת לקוחות */
+.table-container {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.customers-table-container {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.customers-table {
+  min-width: 800px;
+}
+
+.table-header-row {
+  background-color: #3f51b5 !important;
+}
+
+.table-header-cell {
+  color:#3f51b5 !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 16px !important;
+  text-align: center !important;
+}
+
+.table-row {
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.table-row:hover {
+  background-color: #fafafa !important;
+}
+
+/* תאים מיוחדים */
+.institute-id-cell {
+  width: 100px;
+}
+
+.id-chip {
+  font-weight: 600;
+  background-color: #e8eaf6 !important;
+  color: #3f51b5 !important;
+  border: none !important;
+}
+
+.institute-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.institute-avatar {
+  background: linear-gradient(45deg, #3f51b5, #2196f3) !important;
+  color: white;
+  font-weight: 600;
+}
+
+.institute-name {
     font-weight: 500;
   }
   
-  .phone-chip, .email-chip {
-    transition: all 0.2s ease;
+  .phone-chip, .email-chip, .balance-chip {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    height: auto !important;
+    font-weight: normal !important;
   }
   
-  .phone-chip:hover, .email-chip:hover {
-    background-color: rgba(33, 150, 243, 0.1);
-    transform: translateY(-2px);
+  .phone-chip span, .email-chip span, .balance-chip span {
+    padding: 0 !important;
+    font-size: inherit !important;
+    color: #333 !important; /* כל הטקסט בשחור */
   }
   
   .balance-chip {
-    font-weight: 600;
+    font-weight: 600 !important;
+  }
+  
+  .negative-balance {
+
+
+    color: #333 !important; /* שחור רגיל */
+    font-weight: normal !important;
+  }
+  
+  .positive-balance {
+
+
+    color: #333 !important; /* שחור רגיל */
+    font-weight: normal !important;
   }
   
   .action-buttons {
@@ -174,12 +204,10 @@
   
   .edit-button:hover {
     transform: translateY(-2px);
-    background-color: rgba(33, 150, 243, 0.1);
   }
   
   .delete-button:hover {
     transform: translateY(-2px);
-    background-color: rgba(244, 67, 54, 0.1);
   }
   
   /* תא ללא נתונים */
@@ -304,5 +332,10 @@
     .institute-name-container {
       flex-direction: column;
     }
+  }
+  /* עיצוב כותרת הטבלה */
+  .products-list table thead tr {
+    background-color: #3f51b5; /* צבע כחול דומה לטבלת הלקוחות */
+    color: white;
   }
   
