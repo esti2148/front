@@ -10,13 +10,15 @@ import { LogOn } from "../components/customers/logOn/logOn";
 import { Registration } from "../components/customers/registration/registation";
 import { Order } from "../components/customers/order/order";
 import { ShoppingBasket } from "../components/customers/shopping basket/shoppingBasket";
-import CollapsibleTable, {
-  PrevOrders,
-} from "../components/customers/prev orders/prevOrders";
-import { Product } from "../components/customers/product/product";
+import CollapsibleTable, 
+{PrevOrders,} 
+  from "../components/customers/prev orders/prevOrders";
 import { MenuManeger } from "../components/maneger/menu/menu";
 import Home from "../components/customers/home/home";
+
+
 import { Login } from "@mui/icons-material";
+
 import OrdersToBeMade from "../components/maneger/OrdersToBeMade/ordersToBeMade";
 
 export const Routing = () => {
