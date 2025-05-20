@@ -5,6 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTruck, FaTshirt, FaUndo, FaHeadset, FaStar, FaQuoteRight, FaArrowLeft, FaSignInAlt, FaUserPlus, FaUser } from 'react-icons/fa';
 import { getCustomerThunk } from '../../../redux/customerSlice/getCustomerThunk';
+// יבוא תמונות ילדות בקטגוריות המובילות
+import skirtImage from '../../img/girls/4.jpg';
+import shirtImage from '../../img/girls/9.webp';
+import sweaterImage from '../../img/girls/3.jpg';
+import jumperImage from '../../img/girls/5.jpg';
+//יבוא תמונות במוצרים המובילים
+import skirtImageHader from '../../img/skirt/4.jpg';
+import shirtImageHeader from '../../img/uniform/4.jpg';
+import sweaterImageHeader from '../../img/sweater/2.jpg';
+import jumperImageHeader from '../../img/jumper/2.jpg';
+// יבוא תמונות בתי ספר
+import testimonialsOfek from '../../img/school/5.jpg';
+import testimonialsChasidy from '../../img/school/2.jpg';
+import testimonialsViznitzh from '../../img/school/6.jpg';
+
 
 // import './home.css';
 
@@ -16,10 +31,10 @@ export const Home = () => {
 
   // מידע על מוצרים מובילים - בפרויקט אמיתי יגיע מהשרת
   const featuredProducts = [
-    { id: 1, name: 'חולצת פולו כחולה', price: 49.90, image: '/images/blue-polo.jpg', rating: 4.8, sales: 120 },
-    { id: 2, name: 'סרפן בית ספר כחול', price: 79.90, image: '/images/black-pants.jpg', rating: 4.6, sales: 95 },
-    { id: 3, name: 'חצאית בית ספר כחולה', price: 69.90, image: '/images/blue-skirt.jpg', rating: 4.7, sales: 85 },
-    { id: 4, name: 'סוודר', price: 99.90, image: '/images/sweatshirt.jpg', rating: 4.9, sales: 150 }
+    { id: 1, name: 'חולצת גור', price: 59.90, image: shirtImageHeader, rating: 4.8, sales: 120 },
+    { id: 2, name: 'סרפן בית ספר כחול', price: 129.90, image: jumperImageHeader, rating: 4.6, sales: 95 },
+    { id: 3, name: 'חצאית בית ספר כחולה', price: 249.90, image: skirtImageHader, rating: 4.7, sales: 85 },
+    { id: 4, name: ' סוודר', price: 99.90, image: sweaterImageHeader, rating: 4.9, sales: 150 }
   ];
 
   // מידע על בתי ספר - בפרויקט אמיתי יגיע מהשרת
@@ -80,30 +95,31 @@ export const Home = () => {
       text: "התלבושות באיכות מעולה והשירות מהיר ואדיב. ממליצה בחום!",
       author: "מיכל כהן",
       position: "מנהלת בית ספר \"אופק\"",
-      image: "/images/testimonial1.jpg"
+      image: testimonialsOfek
     },
     {
       id: 2,
       text: "כבר שנה שלישית שאנחנו רוכשים תלבושות דרך האתר. מחירים הוגנים ואיכות מעולה.",
-      author: "דוד לוי",
-      position: "יו\"ר ועד הורים, תיכון \"רעות\"",
-      image: "/images/testimonial2.jpg"
+      author: "זלדי בוים",
+      position: "יו\"ר ועד הורים, תיכון \"ויזניץ\"",
+      image: testimonialsViznitzh
     },
     {
       id: 3,
       text: "ההזמנה הגיעה מהר והתלמידים מרוצים מאיכות התלבושות. נמשיך להזמין גם בשנה הבאה.",
-      author: "רונית אברהם",
-      position: "רכזת שכבה, חטיבת \"גלים\"",
-      image: "/images/testimonial3.jpg"
+      author: "אילה קמינר",
+      position: "רכזת שכבה, ביהס \"חסידי\"",
+      image: testimonialsChasidy
     }
   ];
 
   // קטגוריות מוצרים - בפרויקט אמיתי יגיע מהשרת
+
   const categories = [
-    { id: 1, name: 'חולצות', image: '/images/shirts-category.jpg', count: 45 },
-    { id: 2, name: 'סרפנים', image: '/images/pants-category.jpg', count: 32 },
-    { id: 3, name: 'חצאיות', image: '/images/skirts-category.jpg', count: 28 },
-    { id: 4, name: 'סוודרים', image: '/images/sweatshirts-category.jpg', count: 20 }
+    { id: 1, name: 'חולצות', image: shirtImage, count: 45 },
+    { id: 2, name: 'סרפנים', image: jumperImage, count: 32 },
+    { id: 3, name: 'חצאיות', image: skirtImage, count: 28 },
+    { id: 4, name: 'סוודרים', image: sweaterImage, count: 20 }
   ];
 
   // פונקציה להוספה לסל
@@ -244,12 +260,12 @@ export const Home = () => {
                 </div>
                 <p className="price-new">₪{product.price.toFixed(2)}</p>
               </div>
-              <button 
+              {/* <button 
                 className="add-to-cart-button-new" 
                 onClick={(e) => addToCart(product.id, e)}
               >
                 הוספה לסל
-              </button>
+              </button> */}
             </div>
           ))}
         </div>
@@ -454,7 +470,7 @@ export const Home = () => {
               <div className="contact-icon address-icon"></div>
               <div>
                 <h3>כתובת</h3>
-                <p>רחוב הרצל 123, תל אביב</p>
+                <p>רחוב ישא ברכה 6, ירושלים</p>
               </div>
             </div>
             <div className="contact-item">
