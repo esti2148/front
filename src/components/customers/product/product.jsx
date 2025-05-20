@@ -95,20 +95,23 @@ export const Product = (props) => {
     const dispatch = useDispatch();
     const isexist = useSelector(state => state.customer.isExist);
     const list = useSelector(state => state.customer.listProduct);
+    //const sal = useSelector(state => state.customer.listProduct);
     const [count, setCount] = useState(0);
     const [curent, setCurent] = useState({});
     
     useEffect(() => {
-        const c = list.find(x => x.id == prod.id);
+        const c = list.find(x => x.productId== prod.id);
         if (c != null) {
             setCurent(c);
             setCount(Number(c?.qty));
         }
+    //   if(prod)  dispatch(getProductThunk())
     }, []);
-    useEffect(() => {
-        debugger
-        dispatch(getProductThunk())
-    }, []);
+    // useEffect(() => {
+    //     debugger
+    //     dispatch(getProductThunk())
+    //     console.log(curent);
+    // }, []);
     const minus = () => {
         if (count > 0) {
             const cc = Number(count - 1);
@@ -139,7 +142,7 @@ export const Product = (props) => {
             dispatch(changeTotalSal(newProd));
         } else {
             newProd = {
-                id: prod.id,
+                productId: prod.id,
                 productName: prod.productName,
                 dscribe: prod.dscribe,
                 size: prod.size,
@@ -152,9 +155,9 @@ export const Product = (props) => {
 
     return (
         <div className="product-card">
-            <div className="product-image">
-                <img src={`/images/products/${prod.id}.jpg`} alt={prod.productName} onError={(e) => {e.target.src = '/images/product-placeholder.jpg'}} />
-            </div>
+            {/* <div className="product-image">
+                <img src={`/images/products/${prod.id}.jpg`} alt={prod.productName} onError={(e) => {e.target.src = '/images/product-placeholder.jpg'}} /> 
+            </div> */}
             <div className="product-details">
                 <h3 className="product-name">{prod?.productName}</h3>
                 <p className="product-description">{prod?.dscribe}</p>

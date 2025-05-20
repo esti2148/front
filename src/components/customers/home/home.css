@@ -17,7 +17,7 @@ body, html {
 
 /* ===== Auth Header ===== */
 .auth-header {
-  background-color: #3f51b5;
+  /* background-color: #3f51b5; */
   padding: 10px 0;
   color: white;
 }
@@ -48,7 +48,7 @@ body, html {
 .auth-button {
   background: none;
   border: none;
-  color: white;
+  color:  rgba(63, 81, 181, 0.9);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ body, html {
   height: 600px;
   border-radius: 16px;
   overflow: hidden;
-  background-image: url('../../img/shutterstock_145238494.jpg');
+  background-image: url('../../img/school/1.jpg');
   background-size: cover;
   background-position: center;
   margin-bottom: 40px;
@@ -1259,7 +1259,7 @@ body, html {
 
 /* ===== עיצוב לתמונות רקע ===== */
 .hero-section-new {
-  background-image: url('../../img/shutterstock_145238494.jpg');
+  background-image: url('../../img/school/1.jpg');
   background-size: cover;
   background-position: center;
 }
