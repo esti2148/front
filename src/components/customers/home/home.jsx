@@ -16,13 +16,16 @@ import shirtImageHeader from '../../img/uniform/4.jpg';
 import sweaterImageHeader from '../../img/sweater/2.jpg';
 import jumperImageHeader from '../../img/jumper/2.jpg';
 // יבוא תמונות בתי ספר
-import testimonialsOfek from '../../img/school/5.jpg';
-import testimonialsChasidy from '../../img/school/2.jpg';
-import testimonialsViznitzh from '../../img/school/6.jpg';
-
+import testimonials1 from '../../img/school/1.jpg';
+import testimonials2 from '../../img/school/2.jpg';
+import testimonials3 from '../../img/school/3.webp';
+import testimonials4 from '../../img/school/4.jpg';
+import testimonials5 from '../../img/school/5.jpg';
+import testimonials6 from '../../img/school/6.jpg';
+import testimonials7 from '../../img/school/7.jpg';
+import testimonials8 from '../../img/school/8.jpg';
 
 // import './home.css';
-
 export const Home = () => {
   const navigate = useNavigate();
   const isExist = useSelector(state => state.customer.isExist);
@@ -95,21 +98,21 @@ export const Home = () => {
       text: "התלבושות באיכות מעולה והשירות מהיר ואדיב. ממליצה בחום!",
       author: "מיכל כהן",
       position: "מנהלת בית ספר \"אופק\"",
-      image: testimonialsOfek
+      image: testimonials5
     },
     {
       id: 2,
       text: "כבר שנה שלישית שאנחנו רוכשים תלבושות דרך האתר. מחירים הוגנים ואיכות מעולה.",
       author: "זלדי בוים",
       position: "יו\"ר ועד הורים, תיכון \"ויזניץ\"",
-      image: testimonialsViznitzh
+      image: testimonials6
     },
     {
       id: 3,
       text: "ההזמנה הגיעה מהר והתלמידים מרוצים מאיכות התלבושות. נמשיך להזמין גם בשנה הבאה.",
       author: "אילה קמינר",
       position: "רכזת שכבה, ביהס \"חסידי\"",
-      image: testimonialsChasidy
+      image: testimonials2
     }
   ];
 
@@ -130,6 +133,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
+   debugger
     dispatch(getCustomerThunk());
     console.log(mySchools + 'mySchools');
   }, [dispatch]);
@@ -319,12 +323,12 @@ export const Home = () => {
           {mySchools.map(school => (
             <div className="school-card-new" key={school.instituteId}>
               <div className="school-image-new">
-                <img src={school.image} alt={school.instituteName} />
+                <img src={testimonials1} alt={school.instituteName} />
                 <div className="school-overlay">
                   <div className="school-details">
-                    {/* <p><strong>מיקום:</strong> {school.location}</p>
-                    <p><strong>תלמידים:</strong> {school.students}</p>
-                    <p><strong>הצטרף בשנת:</strong> {school.yearJoined}</p> */}
+                    <p><strong>מיקום:</strong> {school.sellingPlace}</p>
+                    <p><strong>מייל:</strong> {school.email}</p>
+                    <p><strong>פלאפון:</strong> {school.phone}</p>
                   </div>
                 </div>
               </div>
@@ -345,7 +349,7 @@ export const Home = () => {
           <div className="cta-features">
             <div className="cta-feature">
               <div className="feature-icon">✓</div>
-              <span>הנחה של 10% על הזמנות מוקדמות</span>
+              <span>הנחות משתלמות למזמינים מוקדם</span>
             </div>
             <div className="cta-feature">
               <div className="feature-icon">✓</div>

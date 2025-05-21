@@ -113,6 +113,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom';
 import { addCustomerThunk } from "../../../redux/customerSlice/addCustomerThunk";
+import schoolImage from '../../img/school/1.jpg';
 
 import { 
   Box, 
@@ -403,7 +404,7 @@ export const Registration = () => {
           <CardMedia
             component="img"
             className="registration-image"
-            image="/images/registration-bg.jpg"
+            image={schoolImage}
             alt="רקע הרשמה"
             // src="/images.png"
           />
