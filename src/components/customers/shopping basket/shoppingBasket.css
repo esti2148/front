@@ -1,763 +1,193 @@
-
-.shopping-basket-page {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  direction: rtl;
-}
-
-.basket-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.basket-header h1 {
-  color: #3f51b5;
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-.basket-header p {
-  color: #757575;
-  font-size: 1.1rem;
-}
-
-.basket-content {
-  display: flex;
-  gap: 30px;
-}
-
-.basket-items {
-  flex: 1;
-}
-
-.basket-summary {
-  width: 350px;
-  flex-shrink: 0;
-}
-
-.basket-item {
-  background-color: white;
+/*  */
+/* סגנונות לדיאלוג התשלום */
+.payment-modal {
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.payment-content {
   padding: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  gap: 20px;
-  position: relative;
 }
 
-.item-image {
-  width: 120px;
-  height: 120px;
+.payment-summary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
   border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
+  margin-bottom: 25px;
+  text-align: center;
 }
 
-.item-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.item-details {
-  flex: 1;
-}
-
-.item-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #3f51b5;
-  margin-bottom: 8px;
-}
-
-.item-description {
-  color: #757575;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-}
-
-.item-meta {
+.payment-amount {
   display: flex;
-  gap: 15px;
-  font-size: 0.9rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.item-size {
-  color: #616161;
+.amount {
+  font-size: 24px;
+  color: #fff;
 }
 
-.item-price {
-  color: #3f51b5;
-  font-weight: 500;
+/* כרטיס אשראי ויזואלי */
+.card-visual {
+  margin-bottom: 25px;
+  perspective: 1000px;
 }
 
-.item-actions {
+.card-front {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  min-height: 180px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-chip {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-number {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  min-height: 25px;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-holder {
+  font-size: 14px;
+  text-transform: uppercase;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-expiry {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+/* טופס תשלום */
+.payment-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
   gap: 15px;
-  min-width: 150px;
 }
 
-.quantity-control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.quantity-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1px solid #e0e0e0;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: all 0.2s;
-}
-
-.quantity-btn:hover {
-  background-color: #f5f5f5;
-}
-
-.quantity-display {
-  font-size: 1rem;
-  font-weight: 500;
-  min-width: 30px;
-  text-align: center;
-}
-
-.item-subtotal {
-  font-size: 1rem;
-  color: #616161;
-}
-
-.subtotal-amount {
-  font-weight: 600;
-  color: #3f51b5;
-  margin-right: 5px;
-}
-
-.remove-btn {
-  background: none;
-  border: none;
-  color: #f44336;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  padding: 5px;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.remove-btn:hover {
-  color: #d32f2f;
-}
-
-.remove-icon {
-  font-size: 1.2rem;
-}
-
-.basket-summary {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 25px;
-  position: sticky;
-  top: 20px;
-}
-
-.basket-summary h2 {
-  color: #3f51b5;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.summary-details {
-  margin-bottom: 25px;
-}
-
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 1rem;
-  color: #616161;
-}
-
-.total-price {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #3f51b5;
-}
-
-.debt {
-  color: #f44336;
-}
-
-.debt-amount {
-  font-weight: 500;
-}
-
-.grand-total {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #e0e0e0;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.grand-total-amount {
-  color: #3f51b5;
-}
-
-.checkout-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.checkout-btn:hover {
-  background-color: #303f9f;
-}
-
-.continue-shopping {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.continue-shopping a {
-  color: #3f51b5;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.continue-shopping a:hover {
-  text-decoration: underline;
-}
-
-.empty-basket {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.empty-basket-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  color: #bdbdbd;
-}
-
-.empty-basket h2 {
-  color: #3f51b5;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.empty-basket p {
-  color: #757575;
-  margin-bottom: 25px;
-}
-
-.primary-button {
-  padding: 12px 24px;
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.primary-button:hover {
-  background-color: #303f9f;
-}
-
-@media (max-width: 900px) {
-  .basket-content {
-    flex-direction: column;
-  }
-  
-  .basket-summary {
-    width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .basket-item {
-    flex-direction: column;
-  }
-  
-  .item-image {
-    width: 100%;
-    height: 200px;
-  }
-  
-  .item-actions {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 15px;
-  }
-}
-
-/* דיאלוג משופר
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
-  backdrop-filter: blur(3px);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.checkout-modal {
-  background-color: white;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  animation: slideUp 0.4s ease;
-  direction: rtl;
-}
-
-.modal-header {
-  background-color: #3f51b5;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-header h2 {
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-.close-modal {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  line-height: 1;
-}
-
-.modal-content {
-  padding: 20px;
-}
-
-.form-group {
-  margin-bottom: 20px;
+.form-row .form-group {
+  flex: 1;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
+  color: #333;
+  font-size: 14px;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.date-error {
-  color: #f44336;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.order-summary {
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  padding: 15px;
-  margin-top: 20px;
-}
-
-.order-summary h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.modal-actions {
-  padding: 15px 20px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
-}
-
-.cancel-btn {
-  padding: 10px 15px;
-  background-color: white;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.cancel-btn:hover {
-  background-color: #f5f5f5;
-}
-
-.confirm-btn {
-  padding: 10px 15px;
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.confirm-btn:hover {
-  background-color: #303f9f;
-}
-
-.confirm-btn:disabled {
-  background-color: #9fa8da;
-  cursor: not-allowed;
-} */
-/* דיאלוג משופר */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
-  backdrop-filter: blur(3px);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.checkout-modal {
-  background-color: white;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 550px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  animation: slideUp 0.4s ease;
-  direction: rtl;
-}
-
-.modal-header {
-  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
-  color: white;
-  padding: 18px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-.close-modal {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.8rem;
-  cursor: pointer;
-  line-height: 1;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.close-modal:hover {
-  opacity: 1;
-}
-
-.modal-content {
-  padding: 24px;
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
-.form-group {
-  margin-bottom: 24px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: #333;
-  font-size: 1.1rem;
-}
-
-.date-input-container {
-  position: relative;
-}
-
-.date-input-container input {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
   border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-  background-color: #f9f9f9;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-.date-input-container input:focus {
-  border-color: #3f51b5;
+.form-group input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.calendar-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #757575;
-  pointer-events: none;
+.form-group input::placeholder {
+  color: #a0a0a0;
 }
 
-.date-error {
-  color: #f44336;
-  font-size: 0.9rem;
-  margin-top: 8px;
+/* הערת אבטחה */
+.security-note {
   display: flex;
   align-items: center;
-}
-
-.date-error::before {
-  content: "⚠️";
-  margin-left: 5px;
-}
-
-.order-summary {
-  background-color: #f5f7fa;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.order-summary h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  color: #333;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 12px;
-}
-
-.summary-items {
-  margin-bottom: 20px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.summary-item {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-  border-bottom: 1px dashed #e0e0e0;
-}
-
-.summary-item:last-child {
-  border-bottom: none;
-}
-
-.summary-item-name {
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-.summary-item-details {
-  display: flex;
-  justify-content: space-between;
-  color: #757575;
-  font-size: 0.9rem;
-}
-
-.summary-item-total {
-  font-weight: 600;
-  color: #333;
-}
-
-.summary-totals {
-  border-top: 2px solid #e0e0e0;
-  padding-top: 15px;
-}
-
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
-.total-amount {
-  font-weight: 600;
-  color: #3f51b5;
-}
-
-.debt {
-  color: #f44336;
-}
-
-.grand-total {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #e0e0e0;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.delivery-note {
-  margin-top: 24px;
-  display: flex;
-  background-color: #e8f5e9;
-  border-radius: 8px;
+  gap: 10px;
+  background: #f8f9fa;
   padding: 15px;
-  align-items: center;
-}
-
-.note-icon {
-  font-size: 2rem;
-  margin-left: 15px;
-  color: #43a047;
-}
-
-.note-text p {
-  margin: 0;
-  color: #2e7d32;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.note-text p:first-child {
-  margin-bottom: 5px;
-}
-
-.modal-actions {
-  padding: 20px 24px;
-  display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e0e0e0;
-}
-
-.cancel-btn {
-  padding: 12px 20px;
-  background-color: white;
-  color: #333;
-  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
+  margin-top: 20px;
+  border-left: 4px solid #28a745;
 }
 
-.cancel-btn:hover {
-  background-color: #f5f5f5;
-  border-color: #d0d0d0;
+.security-icon {
+  font-size: 20px;
 }
 
-.confirm-btn {
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+.security-note p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* כפתור תשלום */
+.pay-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
   color: white;
   border: none;
+  padding: 15px 30px;
   border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
-  min-width: 150px;
+  transition: all 0.3s ease;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
 }
 
-.confirm-btn:hover {
-  background: linear-gradient(135deg, #303f9f, #3f51b5);
+.pay-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
 }
 
-.confirm-btn:disabled {
-  background: linear-gradient(135deg, #9fa8da, #c5cae9);
+.pay-btn:disabled {
+  background: #6c757d;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
+/* ספינר טעינה */
 .loading-spinner-btn {
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
   border-radius: 50%;
-  border-top-color: white;
   animation: spin 1s linear infinite;
 }
 
@@ -766,209 +196,328 @@
   100% { transform: rotate(360deg); }
 }
 
-/* דיאלוג אישור הזמנה */
-.success-modal {
-  background-color: white;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 450px;
-  padding: 40px 30px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  animation: slideUp 0.4s ease;
-}
-
-.success-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #4caf50, #66bb6a);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  margin: 0 auto 25px;
-  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.3);
-  animation: checkmark 0.5s ease-in-out forwards;
-}
-
-@keyframes checkmark {
-  0% {
-      transform: scale(0);
-      opacity: 0;
-  }
-  50% {
-      transform: scale(1.2);
-  }
-  100% {
-      transform: scale(1);
-      opacity: 1;
-  }
-}
-
-.success-modal h2 {
-  color: #2e7d32;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-}
-
-.success-modal p {
-  color: #616161;
-  margin-bottom: 15px;
-  line-height: 1.6;
-  font-size: 1.1rem;
-}
-
-.redirect-message {
-  color: #9e9e9e;
-  font-size: 0.9rem;
-  margin-top: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.redirect-message::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border: 2px solid #e0e0e0;
-  border-top-color: #9e9e9e;
-  border-radius: 50%;
-  margin-left: 8px;
-  animation: spin 1s linear infinite;
-}
-
-/* תמיכה במסכים קטנים */
-@media (max-width: 600px) {
-  .checkout-modal {
-      width: 95%;
-      max-width: none;
-      height: auto;
-      max-height: 90vh;
-  }
-  
-  .modal-header {
-      padding: 15px 20px;
-  }
-  
-  .modal-header h2 {
-      font-size: 1.3rem;
-  }
-  
-  .modal-content {
-      padding: 20px;
-  }
-  
-  .form-group label {
-      font-size: 1rem;
-  }
-  
-  .date-input-container input {
-      padding: 10px 12px;
-  }
-  
-  .summary-item-name {
-      font-size: 0.95rem;
-  }
-  
-  .summary-item-details {
-      font-size: 0.85rem;
-  }
-  
-  .delivery-note {
-      flex-direction: column;
-      text-align: center;
-  }
-  
-  .note-icon {
-      margin: 0 0 10px 0;
-  }
-  
-  .modal-actions {
-      padding: 15px 20px;
-  }
-  
-  .cancel-btn, .confirm-btn {
-      padding: 10px 15px;
-      font-size: 0.95rem;
-  }
-  
-  .success-modal {
-      padding: 30px 20px;
-  }
-  
-  .success-icon {
-      width: 70px;
-      height: 70px;
-      font-size: 35px;
-  }
-  
-  .success-modal h2 {
-      font-size: 1.5rem;
-  }
-  
-  .success-modal p {
-      font-size: 1rem;
-  }
-}
-
-
-
-/* דיאלוג אישור הזמנה */
-.success-modal {
-  background-color: white;
+/* דיאלוג הצלחת תשלום */
+.success-modal .payment-details {
+  background: #f8f9fa;
+  padding: 15px;
   border-radius: 8px;
-  width: 90%;
-  max-width: 450px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  animation: slideUp 0.4s ease;
+  margin: 20px 0;
+  text-align: right;
+}
+
+.success-modal .payment-details p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.success-modal .payment-details strong {
+  color: #28a745;
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+  .payment-modal {
+      max-width: 95%;
+      margin: 10px;
+  }
+  
+  .form-row {
+      flex-direction: column;
+      gap: 20px;
+  }
+  
+  .card-front {
+      padding: 15px;
+      min-height: 160px;
+  }
+  .card-number {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.payment-content {
+    padding: 15px;
+}
+
+.payment-amount {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.amount {
+    font-size: 20px;
+}
+
+.modal-actions {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-actions button {
+    width: 100%;
+}
+}
+
+/* אנימציות נוספות */
+.payment-modal {
+animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+from {
+    opacity: 0;
+    transform: translateY(30px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* אפקטים על הכרטיס */
+.card-front {
+transition: transform 0.3s ease;
+}
+
+.card-front:hover {
+transform: translateY(-5px);
+}
+
+/* סגנון משופר לשדות קלט */
+.form-group input[type="text"],
+.form-group input[type="number"] {
+font-family: inherit;
+}
+
+.form-group input[id="cardNumber"] {
+font-family: 'Courier New', monospace;
+letter-spacing: 1px;
+}
+
+.form-group input[id="expiryDate"],
+.form-group input[id="cvv"] {
+font-family: 'Courier New', monospace;
+}
+
+/* אינדיקטור תקינות שדות */
+.form-group input:valid {
+border-color: #28a745;
+}
+
+.form-group input:invalid:not(:placeholder-shown) {
+border-color: #dc3545;
+}
+
+/* הודעות שגיאה */
+.error-message {
+color: #dc3545;
+font-size: 12px;
+margin-top: 5px;
+display: block;
+}
+
+/* שיפורים נוספים לדיאלוג ההצלחה */
+.success-modal {
+text-align: center;
+animation: bounceIn 0.5s ease-out;
+}
+
+@keyframes bounceIn {
+0% {
+    opacity: 0;
+    transform: scale(0.3);
+}
+50% {
+    opacity: 1;
+    transform: scale(1.05);
+}
+70% {
+    transform: scale(0.9);
+}
+100% {
+    opacity: 1;
+    transform: scale(1);
+}
 }
 
 .success-icon {
-  width: 70px;
-  height: 70px;
-  background-color: #4caf50;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  margin: 0 auto 20px;
-  animation: checkmark 0.5s ease-in-out forwards;
+width: 80px;
+height: 80px;
+background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 40px;
+color: white;
+margin: 0 auto 20px;
+animation: checkmark 0.6s ease-in-out 0.3s both;
 }
 
 @keyframes checkmark {
-  0% {
-      transform: scale(0);
-      opacity: 0;
-  }
-  50% {
-      transform: scale(1.2);
-  }
-  100% {
-      transform: scale(1);
-      opacity: 1;
-  }
+0% {
+    transform: scale(0);
+    opacity: 0;
+}
+50% {
+    transform: scale(1.2);
+    opacity: 1;
+}
+100% {
+    transform: scale(1);
+    opacity: 1;
+}
 }
 
-.success-modal h2 {
-  color: #4caf50;
-  margin-bottom: 15px;
-}
-
-.success-modal p {
-  color: #616161;
-  margin-bottom: 10px;
-  line-height: 1.5;
-}
-
+/* הודעת הפניה */
 .redirect-message {
-  color: #9e9e9e;
-  font-size: 14px;
-  margin-top: 20px;
+color: #666;
+font-style: italic;
+margin-top: 15px;
+animation: pulse 2s infinite;
+}
 
+@keyframes pulse {
+0%, 100% {
+    opacity: 1;
+}
+50% {
+    opacity: 0.7;
+}
+}
+
+/* שיפורים לכפתורים */
+.modal-actions {
+display: flex;
+gap: 15px;
+padding: 20px;
+border-top: 1px solid #e9ecef;
+background: #f8f9fa;
+border-radius: 0 0 12px 12px;
+}
+
+.cancel-btn {
+flex: 1;
+padding: 12px 24px;
+border: 2px solid #6c757d;
+background: white;
+color: #6c757d;
+border-radius: 8px;
+font-size: 16px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+background: #6c757d;
+color: white;
+transform: translateY(-1px);
+}
+
+.confirm-btn,
+.pay-btn {
+flex: 2;
+min-height: 48px;
+}
+
+/* אפקט טעינה על הכפתור */
+.pay-btn.loading {
+pointer-events: none;
+position: relative;
+color: transparent;
+}
+
+.pay-btn.loading::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 20px;
+height: 20px;
+border: 2px solid transparent;
+border-top: 2px solid white;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+
+/* שיפורים לכותרת המודל */
+.modal-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 20px 0;
+border-bottom: 1px solid #e9ecef;
+margin-bottom: 0;
+}
+
+.modal-header h2 {
+margin: 0;
+color: #333;
+font-size: 24px;
+font-weight: 700;
+}
+
+.close-modal {
+background: none;
+border: none;
+font-size: 24px;
+color: #6c757d;
+cursor: pointer;
+padding: 5px;
+border-radius: 50%;
+width: 35px;
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+background: #f8f9fa;
+color: #333;
+}
+
+/* תמיכה בכיוון RTL */
+[dir="rtl"] .form-row {
+direction: rtl;
+}
+
+[dir="rtl"] .card-info {
+direction: rtl;
+}
+
+[dir="rtl"] .security-note {
+border-left: none;
+border-right: 4px solid #28a745;
+}
+
+/* אפקטים נוספים */
+.payment-modal .form-group {
+position: relative;
+}
+
+.payment-modal .form-group input:focus + .form-label {
+color: #667eea;
+}
+
+/* הדגשת שדות חובה */
+.form-group label::after {
+content: ' *';
+color: #dc3545;
+}
+
+/* סגנון מיוחד לסכום התשלום */
+.form-group input[id="paymentAmount"] {
+font-size: 18px;
+font-weight: 600;
+text-align: center;
+background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.form-group input[id="paymentAmount"]:focus {
+background: white;
 }
