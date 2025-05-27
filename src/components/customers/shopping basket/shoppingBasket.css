@@ -1,5 +1,6 @@
-/* 11 */
-/* סגנונות לדיאלוג התשלום */
+/* ===== תוספות חדשות לדיאלוג התשלום בלבד ===== */
+
+/* דיאלוג תשלום */
 .payment-modal {
   background: white;
   border-radius: 12px;
@@ -31,7 +32,7 @@
   font-weight: bold;
 }
 
-.amount {
+.payment-amount .amount {
   font-size: 24px;
   color: #fff;
 }
@@ -42,16 +43,16 @@
   gap: 20px;
 }
 
-.form-row {
+.payment-form .form-row {
   display: flex;
   gap: 15px;
 }
 
-.form-row .form-group {
+.payment-form .form-row .form-group {
   flex: 1;
 }
 
-.form-group label {
+.payment-form .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
@@ -59,7 +60,7 @@
   font-size: 14px;
 }
 
-.form-group input {
+.payment-form .form-group input {
   width: 100%;
   padding: 12px 16px;
   border: 2px solid #e1e5e9;
@@ -69,13 +70,13 @@
   box-sizing: border-box;
 }
 
-.form-group input:focus {
+.payment-form .form-group input:focus {
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.form-group input::placeholder {
+.payment-form .form-group input::placeholder {
   color: #a0a0a0;
 }
 
@@ -90,7 +91,7 @@
   border-left: 4px solid #28a745;
 }
 
-.security-icon {
+.security-note .security-icon {
   font-size: 20px;
 }
 
@@ -136,10 +137,10 @@
   border: 2px solid transparent;
   border-top: 2px solid currentColor;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: payment-spinner 1s linear infinite;
 }
 
-@keyframes spin {
+@keyframes payment-spinner {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
@@ -161,29 +162,31 @@
   color: #28a745;
 }
 
-/* רספונסיביות */
+/* רספונסיביות לדיאלוג תשלום בלבד */
 @media (max-width: 768px) {
   .payment-modal {
       max-width: 95%;
       margin: 10px;
   }
-  
-  .form-row {
+    
+  .payment-form .form-row {
       flex-direction: column;
       gap: 20px;
   }
-  
+    
   .payment-content {
       padding: 15px;
   }
-  
+    
   .payment-amount {
       flex-direction: column;
       gap: 10px;
       text-align: center;
   }
-  
-  .amount {
+    
+  .payment-amount .amount {
       font-size: 20px;
   }
 }
+
+/* ===== סוף התוספות החדשות ===== */
