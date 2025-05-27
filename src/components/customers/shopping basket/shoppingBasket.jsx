@@ -732,49 +732,6 @@
                   <h1>סל הקניות שלך</h1>
                   <p>{sal.length > 0 ? `${sal.length} מוצרים בסל` : 'הסל שלך ריק'}</p>
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               {sal.length > 0 ? (
                   <div className="basket-content">
                       <div className="basket-items">
