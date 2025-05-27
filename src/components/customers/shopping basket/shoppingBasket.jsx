@@ -5,14 +5,19 @@ import './shoppingBasket.css';
 import { changeCount, changeTotalSal, removeFromSal } from '../../../redux/customerSlice/customerSlice';
 import { addOrderToCustomerThunk } from '../../../redux/customerSlice/addOrderToCustomerThunk';
 import { useNavigate } from 'react-router-dom';
+import { updateOrderThunk } from '../../../redux/orderSlice/updateOrderThunk';
+import { updateCustomerThunk } from '../../../redux/customerSlice/updateCustomerThunk';
+import { Order } from '../order/order';
 
 export const ShoppingBasket = () => {
     const sal = useSelector(state => state.customer.listProduct);
+    const customer = useSelector(state => state.customer.currentCustomer);
     const idCustomer = useSelector(state => state.customer.currentCustomer?.instituteId);
     const debt = useSelector(state => state.customer.currentCustomer?.overPluseDebt);
     const [flagdialog, setFlagDialog] = useState(false);
     const [paymentDialog, setPaymentDialog] = useState(false); // הוספה
     const [successDialog, setSuccessDialog] = useState(false);
+     
     const [paymentSuccessDialog, setPaymentSuccessDialog] = useState(false); // הוספה
     const [date, setDate] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,7 +31,7 @@ export const ShoppingBasket = () => {
         cardHolder: '',
         amount: 0
     });
-    
+    const currentSum = paymentDetails.amount;
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -89,6 +94,8 @@ export const ShoppingBasket = () => {
 
     // פונקציות חדשות לתשלום
     const processPayment = async () => {
+        
+
         setIsProcessingPayment(true);
         
         try {
@@ -99,15 +106,27 @@ export const ShoppingBasket = () => {
             const order = {
                 orderId: 0,
                 instituteId: idCustomer,
-                toatlSum: paymentDetails.amount,
+                customerName: '',
+                toatlSum: currentSum,
                 orderDate: new Date(),
                 supplyDate: date,
-                itemOreders: sal,
-                status: 0
+                status: 0,
+                itemOreders: sal
             };
-            
+   
             await dispatch(addOrderToCustomerThunk({ order, idCustomer }));
             
+            console.log("debt", debt);
+            console.log("paymentDetails.amount"+paymentDetails.amount);
+            console.log("currentSum"+currentSum);
+            debugger
+            let newCustomer={
+                ...customer,
+                overPluseDebt: debt + paymentDetails.amount -totalSum
+            };
+            let id = idCustomer
+            
+            await dispatch(updateCustomerThunk({ newCustomer,id }));
             setPaymentDialog(false);
             setPaymentSuccessDialog(true);
             
@@ -147,6 +166,7 @@ export const ShoppingBasket = () => {
     };
 
     const handlePaymentInputChange = (field, value) => {
+        debugger
         let formattedValue = value;
         
         if (field === 'cardNumber') {
@@ -163,7 +183,9 @@ export const ShoppingBasket = () => {
             formattedValue = value.replace(/\D/g, '');
             if (formattedValue.length > 4) return;
         }
-        
+        if(field === 'amount'){
+              
+        }
         setPaymentDetails(prev => ({
             ...prev,
             [field]: formattedValue
@@ -395,7 +417,7 @@ export const ShoppingBasket = () => {
                             <div className="payment-summary">
                                 <div className="payment-amount">
                                     <span>סכום לתשלום:</span>
-                                    <span className="amount">₪{paymentDetails.amount.toFixed(2)}</span>
+                                    <span className="amount">₪{(totalSum+ Math.abs(debt)).toFixed(2)}</span>
                                 </div>
                             </div>
 
