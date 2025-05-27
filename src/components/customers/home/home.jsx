@@ -155,7 +155,11 @@ export const Home = () => {
             <button className="auth-button profile-button" onClick={() => navigate("profile")}>
               הפרופיל שלי
             </button>
+
+            <button className="auth-button logout-button" onClick={() => navigate("/")}>
+
             <button className="auth-button logout-button" onClick={handleLogout}>
+
               התנתקות
             </button>
           </div>
@@ -486,7 +490,9 @@ export const Home = () => {
               <div className="contact-icon hours-icon"></div>
               <div>
                 <h3>שעות פעילות</h3>
-                <p>א'-ה': 9:00-18:00, ו': 9:00-13:00</p>
+                <p>א'-ה': 9:00-18:00,</p>
+                <br></br>
+                <p>ו':9:00-13:00 </p>
               </div>
             </div>
           </div>

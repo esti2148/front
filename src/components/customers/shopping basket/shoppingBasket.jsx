@@ -1233,15 +1233,18 @@ export const ShoppingBasket = () => {
         debugger
         setIsSubmitting(true);
         
-        var order = {
+        let order = {
             orderId: 0,
             instituteId: idCustomer,
+            customerName: '',
             toatlSum: 0,
             orderDate: new Date(),
             supplyDate: date,
+            status: 0,
             itemOreders: sal,
-            status:0
+        
         };
+        
         
         dispatch(addOrderToCustomerThunk({ order, idCustomer }))
             .then(() => {
