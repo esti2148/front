@@ -24,6 +24,7 @@ import OrdersToBeMade from "../components/maneger/OrdersToBeMade/ordersToBeMade"
 export const Routing = () => {
   return (
     <Routes>
+
       <Route path="/" element={<Menu />}>
         {/* כל הדפים האחרים מוגדרים כנתיבים מקוננים בתוך Menu */}
         <Route index element={<Home />} />
@@ -34,6 +35,8 @@ export const Routing = () => {
         <Route path="shoppingBasket" element={<ShoppingBasket />} />
         <Route path="prevOrder" element={<CollapsibleTable />} />
         {/* נתיבים נוספים... */}
+   
+        
       </Route>
 
       <Route path="managerMenu" element={<MenuManeger />}>
