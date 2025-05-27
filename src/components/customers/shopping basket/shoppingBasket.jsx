@@ -333,115 +333,335 @@ export const ShoppingBasket = () => {
         </div>
       )}
 
-     
-      {flagdialog && (
-        <div className="modal-overlay">
-          <div className="checkout-modal">
-            <div className="modal-header">
-              <h2>השלמת הזמנה</h2>
-              <button
-                className="close-modal"
-                onClick={() => setFlagDialog(false)}
-              >
-                ×
-              </button>
-            </div>
 
-            <div className="modal-content">
-              <div className="form-group">
-                <label htmlFor="supply-date">בחר תאריך אספקה</label>
-                <div className="date-input-container">
-                  <input
-                    type="date"
-                    id="supply-date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    min={today}
-                    required
-                  />
-                  {/* <div className="calendar-icon">📅</div> */}
-                </div>
-                {date && !isDateValid && (
-                  <p className="date-error">יש לבחור תאריך עתידי</p>
-                )}
-              </div>
 
-              <div className="order-summary">
-                <h3>סיכום הזמנה</h3>
 
-                <div className="summary-items">
-                  {sal.map((item, index) => (
-                    <div className="summary-item" key={index}>
-                      <div className="summary-item-name">
-                        {item.productName}
+
+
+
+
+
+              {/* דיאלוג משופר לבחירת תאריך אספקה */}
+              {/* {flagdialog && (
+                  <div className="modal-overlay">
+                      <div className="checkout-modal">
+                          <div className="modal-header">
+                              <h2>השלמת הזמנה</h2>
+                              <button className="close-modal" onClick={() => setFlagDialog(false)}>×</button>
+                          </div>
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <div className="modal-content">
+                              <div className="form-group">
+                                  <label htmlFor="supply-date">תאריך אספקה מבוקש</label>
+                                  <input 
+                                      type="date" 
+                                      id="supply-date"
+                                      value={date}
+                                      onChange={(e) => setDate(e.target.value)}
+                                      min={today}
+                                      required
+                                  />
+                                  {date && !isDateValid && (
+                                      <p className="date-error">יש לבחור תאריך עתידי</p>
+                                  )}
+                              </div>
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              <div className="order-summary">
+                                  <h3>סיכום הזמנה</h3>
+                                  <div className="summary-row">
+                                      <span>סה"כ מוצרים:</span>
+                                      <span>{totalItems}</span>
+                                  </div>
+                                  <div className="summary-row">
+                                      <span>סה"כ לתשלום:</span>
+                                      <span>₪{totalSum.toFixed(2)}</span>
+                                  </div>
+                                  {debt < 0 && (
+                                      <div className="summary-row debt">
+                                          <span>חוב קודם:</span>
+                                          <span>₪{Math.abs(debt).toFixed(2)}</span>
+                                      </div>
+                                  )}
+                                  {debt < 0 && (
+                                      <div className="summary-row grand-total">
+                                          <span>סה"כ כולל חוב:</span>
+                                          <span>₪{(totalSum + Math.abs(debt)).toFixed(2)}</span>
+                                      </div>
+                                  )}
+                              </div>
+                          </div>
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          <div className="modal-actions">
+                              <button className="cancel-btn" onClick={() => setFlagDialog(false)}>
+                                  ביטול
+                              </button>
+                              <button 
+                                  className="confirm-btn" 
+                                  onClick={saveOrder}
+                                  disabled={!isDateValid || isSubmitting}
+                              >
+                                  {isSubmitting ? 'מעבד...' : 'אישור והזמנה'}
+                              </button>
+                          </div>
                       </div>
-                      <div className="summary-item-details">
-                        <span>
-                          {item.qty} × ₪{(item.TempSum / item.qty).toFixed(2)}
-                        </span>
-                        <span className="summary-item-total">
-                          ₪{item.TempSum.toFixed(2)}
-                        </span>
+                  </div>
+              )} */}
+              {flagdialog && (
+                  <div className="modal-overlay">
+                      <div className="checkout-modal">
+                          <div className="modal-header">
+                              <h2>השלמת הזמנה</h2>
+                              <button className="close-modal" onClick={() => setFlagDialog(false)}>×</button>
+                          </div>
+                        
+                          <div className="modal-content">
+                              <div className="form-group">
+                                  <label htmlFor="supply-date">בחר תאריך אספקה</label>
+                                  <div className="date-input-container">
+                                      <input 
+                                          type="date" 
+                                          id="supply-date"
+                                          value={date}
+                                          onChange={(e) => setDate(e.target.value)}
+                                          min={today}
+                                          required
+                                      />
+                                      {/* <div className="calendar-icon">📅</div> */}
+                                  </div>
+                                  {date && !isDateValid && (
+                                      <p className="date-error">יש לבחור תאריך עתידי</p>
+                                  )}
+                              </div>
+                            
+                              <div className="order-summary">
+                                  <h3>סיכום הזמנה</h3>
+                                
+                                  <div className="summary-items">
+                                      {sal.map((item, index) => (
+                                          <div className="summary-item" key={index}>
+                                              <div className="summary-item-name">{item.productName}</div>
+                                              <div className="summary-item-details">
+                                                  <span>{item.qty} × ₪{(item.TempSum / item.qty).toFixed(2)}</span>
+                                                  <span className="summary-item-total">₪{item.TempSum.toFixed(2)}</span>
+                                              </div>
+                                          </div>
+                                      ))}
+                                  </div>
+                                
+                                  <div className="summary-totals">
+                                      <div className="summary-row">
+                                          <span>סה"כ מוצרים:</span>
+                                          <span>{totalItems}</span>
+                                      </div>
+                                      <div className="summary-row">
+                                          <span>סה"כ לתשלום:</span>
+                                          <span className="total-amount">₪{totalSum.toFixed(2)}</span>
+                                      </div>
+                                      {debt < 0 && (
+                                          <div className="summary-row debt">
+                                              <span>חוב קודם:</span>
+                                              <span>₪{Math.abs(debt).toFixed(2)}</span>
+                                          </div>
+                                      )}
+                                      {debt < 0 && (
+                                          <div className="summary-row grand-total">
+                                              <span>סה"כ כולל חוב:</span>
+                                              <span>₪{(totalSum + Math.abs(debt)).toFixed(2)}</span>
+                                          </div>
+                                      )}
+                                  </div>
+                              </div>
+                            
+                              <div className="delivery-note">
+                                  <div className="note-icon">🚚</div>
+                                  <div className="note-text">
+                                      <p>המשלוח יגיע בתאריך הנבחר בין השעות 9:00-17:00</p>
+                                      <p>משלוח חינם בהזמנה מעל ₪300</p>
+                                  </div>
+                              </div>
+                          </div>
+                        
+                          <div className="modal-actions">
+                              <button className="cancel-btn" onClick={() => setFlagDialog(false)}>
+                                  ביטול
+                              </button>
+                              <button 
+                                  className="confirm-btn" 
+                                  onClick={proceedToPayment}
+                                  disabled={!isDateValid || isSubmitting}
+                              >
+                                  {isSubmitting ? (
+                                      <span className="loading-spinner-btn"></span>
+                                  ) : (
+
+                                      <>המשך לתשלום</>
+                                  )}
+                              </button>
+                          </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="summary-totals">
-                  <div className="summary-row">
-                    <span>סה"כ מוצרים:</span>
-                    <span>{totalItems}</span>
                   </div>
-                  <div className="summary-row">
-                    <span>סה"כ לתשלום:</span>
-                    <span className="total-amount">₪{totalSum.toFixed(2)}</span>
-                  </div>
-                  {debt < 0 && (
-                    <div className="summary-row debt">
-                      <span>חוב קודם:</span>
-                      <span>₪{Math.abs(debt).toFixed(2)}</span>
-                    </div>
-                  )}
-                  {debt < 0 && (
-                    <div className="summary-row grand-total">
-                      <span>סה"כ כולל חוב:</span>
-                      <span>₪{(totalSum + Math.abs(debt)).toFixed(2)}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
+              )}
 
-              <div className="delivery-note">
-                <div className="note-icon">🚚</div>
-                <div className="note-text">
-                  <p>המשלוח יגיע בתאריך הנבחר בין השעות 9:00-17:00</p>
-                  <p>משלוח חינם בהזמנה מעל ₪300</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="modal-actions">
-              <button
-                className="cancel-btn"
-                onClick={() => setFlagDialog(false)}
-              >
-                ביטול
-              </button>
-              <button
-                className="confirm-btn"
-                onClick={proceedToPayment}
-                disabled={!isDateValid || isSubmitting}
-              >
-                {isSubmitting ? (
-                  <span className="loading-spinner-btn"></span>
-                ) : (
-                  <>המשך לתשלום</>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* דיאלוג תשלום */}
       {paymentDialog && (

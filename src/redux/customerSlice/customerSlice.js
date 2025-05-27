@@ -6,9 +6,10 @@ import { getByIdCustomerThunk } from "./getByIdCustomerThunk";
 import { addOrderToCustomerThunk } from "./addOrderToCustomerThunk";
 import { getByNameAndIdCustomerThunk } from "./getByNameAndIdCustomerThunk";
 import { deleteCustomerThunk } from "./deleteCustomerThunk";
+import { updateCustomerThunk } from "./updateCustomerThunk";
 const INITIAL_STATE = {
   currentCustomer: {instituteId:0, instituteName:'',address:""
-  ,sellingPlace:"",phone:"",orders:[],email:"",overPluseDebt:0},
+  ,sellingPlace:"",phone:"",orders:[],email:"",overPluseDebt:0,status:0},
   isExist: null,
   customerOrders: [],
   listProduct: [],
@@ -126,6 +127,18 @@ export const customerSlice = createSlice({
 
     });
     builder.addCase(deleteCustomerThunk.rejected, (state, action) => {
+
+    });
+
+    builder.addCase(updateCustomerThunk.pending, (state, action) => {
+
+    });
+
+    builder.addCase(updateCustomerThunk.fulfilled, (state, action) => {
+      state.customerOrders = action.payload
+
+    });
+    builder.addCase(updateCustomerThunk.rejected, (state, action) => {
 
     });
   }
