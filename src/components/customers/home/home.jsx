@@ -156,7 +156,7 @@ export const Home = () => {
               הפרופיל שלי
             </button>
 
-            <button className="auth-button logout-button" onClick={() => navigate("/")}>
+            <button className="auth-button logout-button" onClick={() => navigate("/")}/>
 
             <button className="auth-button logout-button" onClick={handleLogout}>
 
