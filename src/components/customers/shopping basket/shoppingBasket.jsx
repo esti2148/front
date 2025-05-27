@@ -264,6 +264,7 @@ export const ShoppingBasket = () => {
                   </button>
                 </div>
               </div>
+
             ))}
           </div>
 
@@ -296,6 +297,7 @@ export const ShoppingBasket = () => {
                     ₪{(totalSum + Math.abs(debt)).toFixed(2)}
                   </span>
                 </div>
+
               )}
             </div>
 
@@ -332,15 +334,6 @@ export const ShoppingBasket = () => {
           </button>
         </div>
       )}
-
-
-
-
-
-
-
-
-
               {/* דיאלוג משופר לבחירת תאריך אספקה */}
               {/* {flagdialog && (
                   <div className="modal-overlay">
@@ -349,23 +342,8 @@ export const ShoppingBasket = () => {
                               <h2>השלמת הזמנה</h2>
                               <button className="close-modal" onClick={() => setFlagDialog(false)}>×</button>
                           </div>
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                          <div className="modal-content">
+      
+                         <div className="modal-content">
                               <div className="form-group">
                                   <label htmlFor="supply-date">תאריך אספקה מבוקש</label>
                                   <input 
@@ -381,30 +359,6 @@ export const ShoppingBasket = () => {
                                   )}
                               </div>
                             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                               <div className="order-summary">
                                   <h3>סיכום הזמנה</h3>
                                   <div className="summary-row">
@@ -430,126 +384,6 @@ export const ShoppingBasket = () => {
                               </div>
                           </div>
                         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                           <div className="modal-actions">
                               <button className="cancel-btn" onClick={() => setFlagDialog(false)}>
                                   ביטול
@@ -572,7 +406,8 @@ export const ShoppingBasket = () => {
                               <h2>השלמת הזמנה</h2>
                               <button className="close-modal" onClick={() => setFlagDialog(false)}>×</button>
                           </div>
-                        
+
+       
                           <div className="modal-content">
                               <div className="form-group">
                                   <label htmlFor="supply-date">בחר תאריך אספקה</label>
