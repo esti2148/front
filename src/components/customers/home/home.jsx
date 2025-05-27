@@ -40,6 +40,8 @@ export const Home = () => {
     { id: 4, name: ' סוודר', price: 99.90, image: sweaterImageHeader, rating: 4.9, sales: 150 }
   ];
 
+  //מערך תמונות בתי ספר
+  const testimonialsImage = [testimonials7, testimonials2 ,testimonials6, testimonials4,testimonials5]
   // מידע על בתי ספר - בפרויקט אמיתי יגיע מהשרת
   const schools = [
     { 
@@ -323,10 +325,10 @@ export const Home = () => {
           <div className="section-line"></div>
         </div>
         <div className="schools-slider">
-          {mySchools.map(school => (
+          {mySchools.map((school,index) => (index<5 &&
             <div className="school-card-new" key={school.instituteId}>
               <div className="school-image-new">
-                <img src={testimonials1} alt={school.instituteName} />
+                <img src={testimonialsImage[index]} alt={school.instituteName} />
                 <div className="school-overlay">
                   <div className="school-details">
                     <p><strong>מיקום:</strong> {school.sellingPlace}</p>

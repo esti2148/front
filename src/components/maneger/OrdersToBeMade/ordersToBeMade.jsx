@@ -13,7 +13,7 @@ const OrdersToBeMade = () => {
   useEffect(() => {
     debugger
     dispatch(getOrderThunk());
-  }, [dispatch]);
+  }, []);
 
   const [orders, setOrders] = useState()
   const [loading, setLoading] = useState(false)
@@ -23,7 +23,9 @@ const OrdersToBeMade = () => {
   // פונקציה לטיפול בשינוי סטטוס הזמנה
   function handleStatusChange(order, newStatus) {
     debugger
-    dispatch(updateOrderThunk({ newOrder: { ...order, status: newStatus }, id: order.orderId }))
+    let orderId = order.orderId
+    let newOrder = { ...order, status: newStatus }
+    dispatch(updateOrderThunk({ newOrder, orderId }))
 
   }
   //פונקציה לטיפול בהצגת שם הלקוח
