@@ -137,6 +137,7 @@ export const LogOn = () => {
     // במקרה אמיתי, יש לבצע בדיקת התחברות מול השרת
     navigate('/');
   };
+  
   const isexist = useSelector(state => state.customer.isExist);
   const cuurntUser = useSelector(state => state.customer.currentCustomer);
   const isManager = useSelector(state => state.customer.isManager);

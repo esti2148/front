@@ -138,6 +138,9 @@ export const Home = () => {
     console.log(mySchools + 'mySchools');
   }, [dispatch]);
 
+  const handleLogout = () => {
+    navigate("/")
+  }
   return (
     <div className="home-new-container">
     {/* Header Auth Section - חדש */}
@@ -150,7 +153,7 @@ export const Home = () => {
             <button className="auth-button profile-button" onClick={() => navigate("profile")}>
               הפרופיל שלי
             </button>
-            <button className="auth-button logout-button" onClick={() => navigate("logout")}>
+            <button className="auth-button logout-button" onClick={handleLogout}>
               התנתקות
             </button>
           </div>
