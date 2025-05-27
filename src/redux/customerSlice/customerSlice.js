@@ -9,7 +9,7 @@ import { deleteCustomerThunk } from "./deleteCustomerThunk";
 import { updateCustomerThunk } from "./updateCustomerThunk";
 const INITIAL_STATE = {
   currentCustomer: {instituteId:0, instituteName:'',address:""
-  ,sellingPlace:"",phone:"",orders:[],email:"",overPluseDebt:0,status:0},
+  ,sellingPlace:"",phone:"",orders:[],email:"",overPluseDebt:0},
   isExist: null,
   customerOrders: [],
   listProduct: [],
@@ -111,6 +111,7 @@ export const customerSlice = createSlice({
     });
 
     builder.addCase(addOrderToCustomerThunk.fulfilled, (state, action) => {
+      debugger
       state.currentCustomer.orders = action.payload
 
     });
